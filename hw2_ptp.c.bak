@@ -3,14 +3,16 @@
 #include <signal.h>
 #include <fcntl.h>
 #include <time.h>
+#include <string.h>
+#include <sys/ioctl.h>
 
 #include <linux/ptp_clock.h>
 
 #define PTPCHN1 "/dev/ptp1"
-#define TSFLAGS PTP_ENABLE_FEATURE | PTP_RISING_EDGE;
 
-int fd;
-struct ptp_extts_event event;
+int fd, cnt;
+struct ptp_clock_caps caps;
+struct ptp_extts_event extts_event;
 struct ptp_extts_request extts_request;
 
 int main(int argc, char *charv[])
@@ -18,26 +20,32 @@ int main(int argc, char *charv[])
   fd = open(PTPCHN1, O_RDWR);
   if(fd < 0)
   {
-    fprintf(stderr, "ptp device not correctly loaded");
+    fprintf(stderr, "ptp device not correctly loaded\n");
     return -1;
   }
   
-    memset(&extts_request, 0, sizeof(extts_request));
-    extts_request.index = 0;
-    extts_request.flags = TSFLAGS;
-    if (ioctl(fd, PTP_EXTTS_REQUEST, &extts_request)) {
-      fprintf(stderr, "PTP_EXTTS_REQUEST failed");
-    } else {
-      fprintf(stdout, "Request successful!");
-    }
-    
-    // Closing the ptp1 channel
-    extts_request.flags = 0;
-    ioctl(fd, PTP_EXTTS_REQUEST, &extts_request);
-    
-    //read(fd, &event);
-    
+  memset(&extts_request, 0, sizeof(extts_request));
+  extts_request.index = 1;
+  extts_request.flags = PTP_ENABLE_FEATURE | PTP_RISING_EDGE;
+  
+  if (ioctl(fd, PTP_EXTTS_REQUEST, &extts_request)) {
+    perror("PTP_EXTTS_REQUEST");
+  } else {
+    fprintf(stdout, "Request successful!\n");
+  }
+
+  fprintf(stdout, "Waiting for event\n");
+	cnt = read(fd, &extts_event, sizeof(extts_event));
+  if (cnt != sizeof(event)) {
+    perror("read");
+    break;
+  }
+  
+  // Closing the ptp1 channel
+  extts_request.flags = 0;
+  ioctl(fd, PTP_EXTTS_REQUEST, &extts_request);
   close(fd);
-  fprintf(stdout, "I am done.");
+
+  fprintf(stdout, "I am done.\n");
   return 0;
 }

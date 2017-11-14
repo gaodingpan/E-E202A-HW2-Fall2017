@@ -3,6 +3,7 @@
 #include <signal.h>
 #include <fcntl.h>
 #include <time.h>
+#include <string.h>
 
 #include <linux/ptp_clock.h>
 

@@ -37,6 +37,7 @@ int main(int argc, char *charv[])
     
     //read(fd, &event);
     
-  
+  close(fd);
+  fprintf(stdout, "I am done.");
   return 0;
 }

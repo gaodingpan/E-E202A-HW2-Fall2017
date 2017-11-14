@@ -5,6 +5,7 @@
 #include <time.h>
 #include <string.h>
 #include <sys/ioctl.h>
+#include <unistd.h>
 
 #include <linux/ptp_clock.h>
 
@@ -15,10 +16,17 @@
 config-pin overlay cape-universala\n\
 config-pin P8_10 timer\n\
 "
+#define LOADPTP "\
+#/bin/bash \n\
+capes\n\
+capes BBB-AM335X\n\
+capes\n\
+"
+
 
 int fd, cnt, start;
 long secdiff, nsecdiff;
-double currentStamp;
+long double currentStamp;
 FILE *output;
 struct ptp_clock_caps caps;
 struct ptp_extts_event extts_event;
@@ -41,20 +49,21 @@ void sigintHandler(int sig_num)
 
 int main(int argc, char *argv[])
 {
-  system(CONFIGPIN);
   if(argc != 2)
   {
     fprintf(stderr, "Insufficient argument is given, please enter the output path.\n");
     return -1;
   }
+  fd = open(PTPCHN1, O_RDWR);
+  while(fd < 0)
+  {
+    system(LOADPTP);
+    fd = open(PTPCHN1, O_RDWR);
+  }
+  system(CONFIGPIN);
   signal(SIGINT, sigintHandler);
   
-  fd = open(PTPCHN1, O_RDWR);
   output = fopen(argv[1], "w");
-  if(fd < 0)
-  {
-    perror("ptp1");
-  }
   start = 1;
   memset(&extts_request, 0, sizeof(extts_request));
   extts_request.index = 1;
@@ -66,19 +75,22 @@ int main(int argc, char *argv[])
     fprintf(stdout, "Request successful!\n");
   }
   int i;
-  for(i = 0; i < 20; i++) {
+  for(i = 0; i < 20; i++) 
+  {
   if (start) {
     read(fd, &init_extts_event, sizeof(init_extts_event));
     extts_event = init_extts_event;
     start = 0;
+  } else {	
+    read(fd, &extts_event, sizeof(extts_event));
   }
-	read(fd, &extts_event, sizeof(extts_event));
+
   secdiff = extts_event.t.sec - init_extts_event.t.sec;
   nsecdiff = extts_event.t.nsec - init_extts_event.t.nsec;
-  currentStamp = ((double) secdiff + nsecdiff / 1000000000.0);
-  fprintf(output, "%lf\n", currentStamp);
-  fprintf(stdout, "Event Channel:%d, Event timestamp: %lld.%09u\n", extts_event.index, 
-          secdiff, nsecdiff);
+  currentStamp = ((long double) secdiff + nsecdiff / 1000000000.0);
+  fprintf(output, "%Lf\n", currentStamp);
+  fprintf(stdout, "Event Channel:%d, Event timestamp: %Lf\n", extts_event.index, 
+          currentStamp);
   
   }
   return 0;

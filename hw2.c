@@ -2,6 +2,7 @@
 //Dinggao Pan
 //HW2 EEM202A
 //this program uses clock_gettime to timestamp pulses on pin4 of header P8
+//
 
 #include <time.h>
 #include <stdio.h>

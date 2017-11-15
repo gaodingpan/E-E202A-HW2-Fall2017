@@ -57,8 +57,10 @@ int main(int argc, char *argv[])
     fprintf(stderr, "Insufficient argument is given, please enter the output path.\n");
     return -1;
   }
-  system(LOADPTP);
   fd = open(PTPCHN1, O_RDWR);
+  if (fd <0) {
+    system(LOADPTP);
+  }
   while(fd < 0)
   {
     fd = open(PTPCHN1, O_RDWR);
@@ -78,6 +80,7 @@ int main(int argc, char *argv[])
   } else {
     fprintf(stdout, "Request successful!\n");
   }
+  
   int i;
   for(i = 0; i < 20; i++) 
   {

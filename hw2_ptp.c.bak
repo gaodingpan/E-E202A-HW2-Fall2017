@@ -33,13 +33,16 @@ struct ptp_extts_event extts_event;
 struct ptp_extts_event init_extts_event;
 struct ptp_extts_request extts_request;
 
+
 void sigintHandler(int sig_num)
 {
 	
 	printf("\nTerminating \n");
     // Closing the ptp1 channel
   extts_request.flags = 0;
-  ioctl(fd, PTP_EXTTS_REQUEST, &extts_request);
+  if (ioctl(fd, PTP_EXTTS_REQUEST, &extts_request)) {
+    perror("PTP_EXTTS_REQUEST");
+  }
   close(fd);
 	fclose(output);
   fprintf(stdout, "I am done.\n");
@@ -54,12 +57,13 @@ int main(int argc, char *argv[])
     fprintf(stderr, "Insufficient argument is given, please enter the output path.\n");
     return -1;
   }
+  system(LOADPTP);
   fd = open(PTPCHN1, O_RDWR);
   while(fd < 0)
   {
-    system(LOADPTP);
     fd = open(PTPCHN1, O_RDWR);
   }
+
   system(CONFIGPIN);
   signal(SIGINT, sigintHandler);
   
@@ -89,8 +93,8 @@ int main(int argc, char *argv[])
   nsecdiff = extts_event.t.nsec - init_extts_event.t.nsec;
   currentStamp = ((long double) secdiff + nsecdiff / 1000000000.0);
   fprintf(output, "%Lf\n", currentStamp);
-  fprintf(stdout, "Event Channel:%d, Event timestamp: %Lf\n", extts_event.index, 
-          currentStamp);
+//  fprintf(stdout, "Event Channel:%d, Event timestamp: %Lf\n", extts_event.index, 
+//          currentStamp);
   
   }
   return 0;

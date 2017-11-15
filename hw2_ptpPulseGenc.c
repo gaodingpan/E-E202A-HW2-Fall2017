@@ -20,7 +20,7 @@
 #define CONFIGPIN "\
 #/bin/bash \n\
 config-pin overlay cape-universala\n\
-config-pin P8_10 timer\n\
+config-pin P8_8 timer\n\
 "
 #define LOADPTP "\
 #/bin/bash \n\
@@ -33,23 +33,32 @@ capes\n\
 int fd, cnt, start;
 long secdiff, nsecdiff;
 long double currentStamp;
-FILE *output;
-struct ptp_extts_event extts_event;
-struct ptp_extts_event init_extts_event;
-struct ptp_extts_request extts_request;
+FILE *input;
+//struct ptp_time init_event, curr_event;
+struct ptp_perout_request perout_request;
+struct timespec ts;
+clockid_t clkid;
 
+static clockid_t get_clockid(int fd)
+{
+#define CLOCKFD 3
+#define FD_TO_CLOCKID(fd)	((~(clockid_t) (fd) << 3) | CLOCKFD)
+
+	return FD_TO_CLOCKID(fd);
+}
 
 void sigintHandler(int sig_num)
 {
 	
 	printf("\nTerminating \n");
     // Closing the ptp1 channel
-	extts_request.flags = 0;
-	if (ioctl(fd, PTP_EXTTS_REQUEST, &extts_request)) {
-		perror("PTP_EXTTS_REQUEST");
+	perout_request.period.sec = 0;
+	perout_request.period.nsec = 0;
+	if (ioctl(fd, PTP_PEROUT_REQUEST, &perout_request)) {
+		perror("PTP_PEROUT_REQUEST");
 	}
 	close(fd);
-	fclose(output);
+	fclose(input);
 	fprintf(stdout, "I am done.\n");
 	exit(0);
 }
@@ -73,33 +82,36 @@ int main(int argc, char *argv[])
   system(CONFIGPIN);
   signal(SIGINT, sigintHandler);
   
-  output = fopen(argv[1], "w");
-  start = 1;
-  memset(&extts_request, 0, sizeof(extts_request));
-  extts_request.index = 1;
-  extts_request.flags = PTP_ENABLE_FEATURE | PTP_RISING_EDGE;
+  input = fopen(argv[1], "rw");
   
-  if (ioctl(fd, PTP_EXTTS_REQUEST, &extts_request)) {
-    perror("PTP_EXTTS_REQUEST");
+  clkid = get_clockid(fd);
+  if (clkid == -1) {
+		fprintf(stderr, "failed to read clock id\n");
+		return -1;
+	}
+  
+  memset(&perout_request, 0, sizeof(perout_request));
+  perout_request.index = 1;
+  clock_gettime(clkid, &ts);
+  perout_request.start.sec = ts.tv_sec + 2;
+  perout_request.start.nsec = 0;
+  perout_request.period.sec = 0;
+  perout_request.period.nsec = 1000000;
+  
+  if (ioctl(fd, PTP_PEROUT_REQUEST, &perout_request)) {
+    perror("PTP_PEROUT_REQUEST");
   } else {
     fprintf(stdout, "Ready for inputs!\n");
   }
   
   while(1)
   {
-	if (start) {
-		read(fd, &init_extts_event, sizeof(init_extts_event));
-		extts_event = init_extts_event;
-		start = 0;
-	} else {	
-		read(fd, &extts_event, sizeof(extts_event));
+
 	}
 
-	secdiff = extts_event.t.sec - init_extts_event.t.sec;
-	nsecdiff = extts_event.t.nsec - init_extts_event.t.nsec;
+//secdiff = extts_event.t.sec - init_extts_event.t.sec;
+//	nsecdiff = extts_event.t.nsec - init_extts_event.t.nsec;
 	currentStamp = ((long double) secdiff + nsecdiff / 1000000000.0);
-	fprintf(output, "%Lf\n", currentStamp);
   
-  }
   return 0;
 }

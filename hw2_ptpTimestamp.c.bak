@@ -34,6 +34,7 @@ int fd, cnt, start;
 long secdiff, nsecdiff;
 long double currentStamp;
 FILE *output;
+struct ptp_clock_caps caps;
 struct ptp_extts_event extts_event;
 struct ptp_extts_event init_extts_event;
 struct ptp_extts_request extts_request;

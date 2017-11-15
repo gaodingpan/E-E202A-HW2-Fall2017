@@ -47,11 +47,10 @@ static clockid_t get_clockid(int fd)
 	return FD_TO_CLOCKID(fd);
 }
 
-void sigintHandler(int sig_num)
+void cleanQuit() 
 {
-	
-	printf("\nTerminating \n");
-    // Closing the ptp1 channel
+  printf("\nTerminating \n");
+  // Closing the ptp1 channel
 	perout_request.period.sec = 0;
 	perout_request.period.nsec = 0;
 	if (ioctl(fd, PTP_PEROUT_REQUEST, &perout_request)) {
@@ -60,6 +59,11 @@ void sigintHandler(int sig_num)
 	close(fd);
 	fclose(input);
 	fprintf(stdout, "I am done.\n");
+}
+
+void sigintHandler(int sig_num)
+{
+	cleanQuit();
 	exit(0);
 }
 
@@ -112,6 +116,6 @@ int main(int argc, char *argv[])
 //secdiff = extts_event.t.sec - init_extts_event.t.sec;
 //	nsecdiff = extts_event.t.nsec - init_extts_event.t.nsec;
 	currentStamp = ((long double) secdiff + nsecdiff / 1000000000.0);
-  
+  cleanQuit();
   return 0;
 }

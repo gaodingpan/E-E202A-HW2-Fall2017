@@ -41,8 +41,8 @@ clockid_t clkid;
 
 static clockid_t get_clockid(int fd)
 {
-#define CLOCKFD 3
-#define FD_TO_CLOCKID(fd)	((~(clockid_t) (fd) << 3) | CLOCKFD)
+  #define CLOCKFD 3
+  #define FD_TO_CLOCKID(fd)	((~(clockid_t) (fd) << 3) | CLOCKFD)
 
 	return FD_TO_CLOCKID(fd);
 }
@@ -95,8 +95,11 @@ int main(int argc, char *argv[])
 	}
   
   memset(&perout_request, 0, sizeof(perout_request));
-  perout_request.index = 1;
-  clock_gettime(clkid, &ts);
+  perout_request.index = 2;
+  if (clock_gettime(clkid, &ts)) {
+    perror("clock_gettime");
+    return -1;
+  }
   perout_request.start.sec = ts.tv_sec + 2;
   perout_request.start.nsec = 0;
   perout_request.period.sec = 0;

@@ -8,11 +8,16 @@
 #include <signal.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <string.h>
 #include <unistd.h>
 
 #define  PULSELEN 1000000
 #define  TONANO 1000000000
-
+#define CONFIGPIN "\
+#/bin/bash \n\
+config-pin overlay cape-universala\n\
+config-pin P9_23 gpio\n\
+"
 struct timespec starttime, testStart, testEnd;
 FILE *infileptr;
 FILE *exportfileptr;
@@ -21,13 +26,19 @@ FILE *gpioedgeptr;
 FILE *outputValue;
 
 void pulse();
-void waiting(uint64_t interval);
 double TimeSpecToNano(struct timespec* ts);
 
 //handle cntrl+c
 void sigintHandler(int sig_num)
 {
-	printf("\nTerminating... \n");
+	fprintf(stdout, "\nTerminating... \n");
+  fclose(infileptr);
+  system("echo 0 > /sys/class/gpio/gpio49/value");
+  exportfileptr = fopen("/sys/class/gpio/unexport", "w");
+	fprintf(exportfileptr, "49");
+	fclose(exportfileptr);
+  	
+	fprintf(stdout, "Done\n");
 	exit(0);
 }
 
@@ -39,7 +50,7 @@ int main(int argc, char *argv[])
 	//check that path is given
 	if (argc!=2)
 	{
-		printf("Please enter the path of input file\n");
+		fprintf(stderr, "Please enter the path of input file\n");
 		exit (0);
 	}
 
@@ -57,21 +68,24 @@ int main(int argc, char *argv[])
 
 	//open pin
 	exportfileptr = fopen("/sys/class/gpio/export", "w");
-	fprintf(exportfileptr, "39"); //pin4 on header P8 gpio1[7]
+	fprintf(exportfileptr, "49"); 
 	fclose(exportfileptr);
 
 	//configure pin as output
-	gpiodirectionptr = fopen("/sys/class/gpio/gpio39/direction", "w");
+	gpiodirectionptr = fopen("/sys/class/gpio/gpio49/direction", "w");
 	fprintf(gpiodirectionptr, "out");
 	fclose(gpiodirectionptr);
-
-	printf("entering while loop\n");
-
+  
+  memset(&starttime, 0, sizeof(starttime));
+  memset(&testStart, 0, sizeof(testStart));
+  memset(&testEnd, 0, sizeof(testEnd));
+	fprintf(stdout, "entering while loop\n");
+  system(CONFIGPIN);
   //get start time
   printf("try to get times\n");
   long double waitTime, timestamp, tsPrev, tsNano, startNano; 
+  tsPrev = -1;
   fscanf(infileptr, "%Lf", &timestamp);
-
 	while(timestamp != tsPrev)
   {
     if (timestamp == 0)
@@ -83,12 +97,11 @@ int main(int argc, char *argv[])
       tsNano = TimeSpecToNano(&testStart);
       waitTime = timestamp * TONANO + startNano - tsNano;
       usleep((uint64_t)waitTime / 1000);
-      clock_gettime(CLOCK_MONOTONIC, &testEnd);
-      printf("Current timestamp = %Lf \n", timestamp);
-      printf("Real Timestamp = %Lf, \n", (TimeSpecToNano(&testEnd) - startNano)/TONANO);
-    }
+   }
 
-    pulse();
+    system("echo 1 > /sys/class/gpio/gpio49/value");
+    usleep(1000);
+    system("echo 0 > /sys/class/gpio/gpio49/value");
 
     tsPrev = timestamp;
     fscanf(infileptr, "%Lf", &timestamp);
@@ -96,20 +109,11 @@ int main(int argc, char *argv[])
   fclose(infileptr);
   
   exportfileptr = fopen("/sys/class/gpio/unexport", "w");
-	fprintf(exportfileptr, "39"); //pin4 on header P8 gpio1[7]
+	fprintf(exportfileptr, "49");
 	fclose(exportfileptr);
   	
 	fprintf(stdout, "Done\n");
 	return 0;
-}
-
-void pulse()
-{
-  outputValue = fopen("/sys/class/gpio/gpio39/value", "w");
-  fprintf(outputValue, "1");
-  usleep((uint64_t)1000);
-  fprintf(outputValue, "0");
-  fclose(outputValue);
 }
 
 double TimeSpecToNano(struct timespec* ts)

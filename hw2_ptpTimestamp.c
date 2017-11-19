@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
     fd = open(PTPCHN1, O_RDWR);
   }
 
-  system(CONFIGPIN);
+//  system(CONFIGPIN);
   signal(SIGINT, sigintHandler);
   
   output = fopen(argv[1], "w");
@@ -90,15 +90,15 @@ int main(int argc, char *argv[])
 	if (start) {
 		read(fd, &init_extts_event, sizeof(init_extts_event));
 		extts_event = init_extts_event;
+    fprintf(output, "%Lf\n", (long double)0);
 		start = 0;
 	} else {	
-		read(fd, &extts_event, sizeof(extts_event));
+		read(fd, &extts_event, sizeof(extts_event));  
+    secdiff = extts_event.t.sec - init_extts_event.t.sec;
+    nsecdiff = extts_event.t.nsec - init_extts_event.t.nsec - 1000;
+    currentStamp = ((long double) secdiff + nsecdiff / 1000000000.0);
+    fprintf(output, "%Lf\n", currentStamp);
 	}
-
-	secdiff = extts_event.t.sec - init_extts_event.t.sec;
-	nsecdiff = extts_event.t.nsec - init_extts_event.t.nsec;
-	currentStamp = ((long double) secdiff + nsecdiff / 1000000000.0);
-	fprintf(output, "%Lf\n", currentStamp);
   
   }
   return 0;

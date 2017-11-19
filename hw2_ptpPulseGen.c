@@ -147,7 +147,7 @@ int main(int argc, char *argv[])
       waitNano = (currentStamp -tsPrev) * 1000000000;
       clock_gettime(clkid, &curts);
       while(TimeSpecToNano(&curts) < (TimeSpecToNano(&ts) 
-            + currentStamp * 1000000000 - waitNano))
+            + currentStamp * 1000000000 - waitNano + 30000))
       {
         clock_gettime(clkid, &curts);
       }

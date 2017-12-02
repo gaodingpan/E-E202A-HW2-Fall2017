@@ -44,11 +44,11 @@
 
 volatile int stop = 0;
 volatile uint8_t *shared_mem;
-
 struct rbuffer *send_to_pru_rbuffer;
 struct rbuffer *receive_from_pru_rbuffer;
-
 double first_ts = 0;
+float offset_ns = 10062.0;
+float count = 0.0;
 int first = 1;
 double timedifference = 0.0;
 FILE *outfileptr;
@@ -90,14 +90,18 @@ void *receive_pru_thread(void *value)
 		
 		//zero timestamp on first event
 		if (first == 1) {
-			first = 0;
+		    first = 0;
+            count = count + 1.0;
 			first_ts = (double)data/1000000000.0;
+            fprintf(outfileptr, "0.000000000\n");
 		}
 		
-		//conversion
-		timedifference = (double)data/1000000000.0 - first_ts;
-		fprintf(outfileptr, "%.9lf\n", timedifference);
-
+        else {
+		  //conversion
+            timedifference = (((double)data - count*offset_ns)/1000000000.0) - first_ts;
+            fprintf(outfileptr, "%.9lf\n", timedifference);
+            count = count + 1.0;
+        }
     }
 }
 

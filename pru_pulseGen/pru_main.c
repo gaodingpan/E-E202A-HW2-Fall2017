@@ -1,6 +1,6 @@
 // Ron Ocampo, Dinggao Pan
-// HW2 PRU
-// 11/28/2017
+// HW2 PRU Pulse Gen
+// 12/3/2017
 
 
 /*
@@ -17,17 +17,9 @@
 #include "nesl_pru_iep.h"
 #include "nesl_pru_wait.h"
 #include "nesl_pru_rbuffer.h"
+#include "nesl_pru_ticks.h"
 #include "nesl_pru_gpio.h"
 #include <stdint.h>
-<<<<<<< HEAD
-
-int main()
-{
-    struct rbuffer *rbuf = (struct rbuffer *) (uint32_t) 0x10000;
-    init_rbuffer(rbuf);
-	uint32_t waitTime = 0;
-	int curCycle = 0;
-=======
 #include <stdlib.h>
 
 #define SHARED_MEM_BASE 0x10000
@@ -68,56 +60,41 @@ int main()
 	//int curCycle = 0;
 
 	short status = -1;
->>>>>>> parent of 5a804e7... clean up
 
     while(1) {
-        waitTime = rbuf_read_uint32(rbuf, 0);
-		if(waitTime < 0)// Oringinally for breaking out of the loop, should use the com in new example you used
-		{
-			break;
+		//if received sigint from host terminate
+		if (rbuf_read_uint64(terminate_buf, &status)) {
+			DISABLE_IEP_TMR();
+			terminate();
 		}
-		while(curCycle < waitTime / 2) {
-			curCycle += 3;//while loop is around 2 cycles, the addition counts for 1
-		}
-		//WAIT_CYCLES((int)waitTime);
-        TRIG_INTC(3); // Trigger interrupt PRUEVENT_0 for update of next waitTime
-		while(curCycle < waitTime) {
-			curCycle += 3;//while loop is around 2 cycles, the addition counts for 1
-		}
-        //WAIT_CYCLES((int)waitTime - 3);
-		toggle_pin(P9_27);
-		WAIT_CYCLES(98);
-		toggle_pin(P9_27);//combined 100ms pulse
-		curCycle = 0;
-    }
 
-<<<<<<< HEAD
-
-    // Exiting the application - send the interrupt
-    TRIG_INTC(4); // Trigger interrupt PRUEVENT_1
-    __halt(); // halt the PRU
-}
-
-=======
 		waitTime = rbuf_read_uint64(rec_buf, &status);
 		//if you received a new waitTime
 		if(waitTime != 0) {
 			//toggle pin for 50us
->>>>>>> parent of 5a804e7... clean up
 
+			if(first) {
+				first = 0;
+				curTime = iep_get_time(&time);
+				prevTime = curTime;
+				assert_pin(P8_46);
+				WAIT_US(50);
+				deassert_pin(P8_46);
+			}			
 
-<<<<<<< HEAD
-=======
 			//spin until it is time for the next pulse
 			while((curTime - prevTime) < waitTime) {
 				curTime = iep_get_time(&time);
 			}
->>>>>>> parent of 5a804e7... clean up
 
+			//jump out of loop
 
+			assert_pin(P8_46);
+			WAIT_US(50);
+			deassert_pin(P8_46);
+			prevTime = curTime;
+			TRIG_INTC(3); // Trigger interrupt PRUEVENT_0
 
-<<<<<<< HEAD
-=======
 			//ready for new wait time
 		}
 
@@ -143,4 +120,3 @@ int main()
 		*/
     }
 }
->>>>>>> parent of 5a804e7... clean up

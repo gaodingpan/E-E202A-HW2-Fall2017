@@ -54,8 +54,6 @@ void sigintHandler(int sig_num)
 	printf("\nTerminating \n");
 	stop = 1;
 	
-	//close intput file
-	fclose(inputPtr);
 	
 	//close PRU
 	//buffer value 1 means terminate
@@ -70,15 +68,18 @@ void sigintHandler(int sig_num)
 
 void nomoreinputs() {
 	printf("\nno more inputs \n");
-	stop = 1;
+	//stop = 1;
 	
+
 	//close PRU
 	//buffer value 1 means terminate
     rbuf_write_uint64(terminate_pru_rbuffer, 1);
+    //printf("exit\n");
 	printf("pru terminate\n");
 	
 	prussdrv_pru_disable(PRU_NUM);
     prussdrv_exit ();
+
 
 	exit(0);
 }

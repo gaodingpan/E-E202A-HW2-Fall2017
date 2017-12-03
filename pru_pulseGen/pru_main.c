@@ -25,6 +25,7 @@
 #define SHARED_MEM_BASE 0x10000
 
 uint64_t curTime, prevTime;
+uint64_t offset_ns = 8065;
 int first = 1;
 
 void
@@ -83,7 +84,7 @@ int main()
 			}			
 
 			//spin until it is time for the next pulse
-			while((curTime - prevTime) < waitTime) {
+			while((curTime - prevTime) < (waitTime + offset_ns)) {
 				curTime = iep_get_time(&time);
 			}
 

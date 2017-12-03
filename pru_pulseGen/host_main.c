@@ -34,8 +34,6 @@
 
 #include "nesl_pru_rbuffer.h"
 
-#define ERROR 0 //static error for passing the cariable to pru
-
 volatile int stop = 0;
 volatile uint8_t *shared_mem;
 struct rbuffer *terminate_pru_rbuffer;
@@ -75,7 +73,7 @@ void nomoreinputs() {
 	//close PRU
 	//buffer value 1 means terminate
     rbuf_write_uint64(terminate_pru_rbuffer, 1);
-	printf("pru terminate\n");
+	//printf("pru terminate\n");
 	
 	prussdrv_pru_disable(PRU_NUM);
     prussdrv_exit ();

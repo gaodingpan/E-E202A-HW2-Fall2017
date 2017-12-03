@@ -1,6 +1,6 @@
 ;******************************************************************************
 ;* PRU C/C++ Codegen                                              Unix v2.1.0 *
-;* Date/Time created: Mon Mar  2 04:34:32 2015                                *
+;* Date/Time created: Sun Mar  1 21:00:50 2015                                *
 ;******************************************************************************
 	.compiler_opts --abi=eabi --endian=little --hll_source=on --object_format=elf --silicon_version=3 --symdebug:dwarf --symdebug:dwarf_version=3 
 
@@ -86,6 +86,22 @@ $C$DW$11	.dwtag  DW_TAG_variable, DW_AT_name("prevTime")
 	.dwattr $C$DW$11, DW_AT_decl_file("pru_main.c")
 	.dwattr $C$DW$11, DW_AT_decl_line(0x1b)
 	.dwattr $C$DW$11, DW_AT_decl_column(0x13)
+	.global	||offset_ns||
+	.data
+	.align	1
+	.elfsym	||offset_ns||,SYM_SIZE(8)
+||offset_ns||:
+	.bits		0x1f40,32
+	.bits		0,32			; offset_ns @ 0
+
+$C$DW$12	.dwtag  DW_TAG_variable, DW_AT_name("offset_ns")
+	.dwattr $C$DW$12, DW_AT_TI_symbol_name("offset_ns")
+	.dwattr $C$DW$12, DW_AT_location[DW_OP_addr ||offset_ns||]
+	.dwattr $C$DW$12, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$12, DW_AT_external
+	.dwattr $C$DW$12, DW_AT_decl_file("pru_main.c")
+	.dwattr $C$DW$12, DW_AT_decl_line(0x1c)
+	.dwattr $C$DW$12, DW_AT_decl_column(0x0a)
 	.global	||first||
 	.data
 	.align	1
@@ -93,38 +109,38 @@ $C$DW$11	.dwtag  DW_TAG_variable, DW_AT_name("prevTime")
 ||first||:
 	.bits	1,32			; first @ 0
 
-$C$DW$12	.dwtag  DW_TAG_variable, DW_AT_name("first")
-	.dwattr $C$DW$12, DW_AT_TI_symbol_name("first")
-	.dwattr $C$DW$12, DW_AT_location[DW_OP_addr ||first||]
-	.dwattr $C$DW$12, DW_AT_type(*$C$DW$T$10)
-	.dwattr $C$DW$12, DW_AT_external
-	.dwattr $C$DW$12, DW_AT_decl_file("pru_main.c")
-	.dwattr $C$DW$12, DW_AT_decl_line(0x1c)
-	.dwattr $C$DW$12, DW_AT_decl_column(0x05)
-;	acpiapru -@/tmp/07996qweIAL 
+$C$DW$13	.dwtag  DW_TAG_variable, DW_AT_name("first")
+	.dwattr $C$DW$13, DW_AT_TI_symbol_name("first")
+	.dwattr $C$DW$13, DW_AT_location[DW_OP_addr ||first||]
+	.dwattr $C$DW$13, DW_AT_type(*$C$DW$T$10)
+	.dwattr $C$DW$13, DW_AT_external
+	.dwattr $C$DW$13, DW_AT_decl_file("pru_main.c")
+	.dwattr $C$DW$13, DW_AT_decl_line(0x1d)
+	.dwattr $C$DW$13, DW_AT_decl_column(0x05)
+;	acpiapru -@/tmp/015986lS5H1 
 	.sect	".text:init_iep_time"
 	.clink
 	.global	||init_iep_time||
 
-$C$DW$13	.dwtag  DW_TAG_subprogram, DW_AT_name("init_iep_time")
-	.dwattr $C$DW$13, DW_AT_low_pc(||init_iep_time||)
-	.dwattr $C$DW$13, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$13, DW_AT_TI_symbol_name("init_iep_time")
-	.dwattr $C$DW$13, DW_AT_external
-	.dwattr $C$DW$13, DW_AT_TI_begin_file("../../include/nesl_pru_iep.h")
-	.dwattr $C$DW$13, DW_AT_TI_begin_line(0x1b)
-	.dwattr $C$DW$13, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$13, DW_AT_decl_file("../../include/nesl_pru_iep.h")
-	.dwattr $C$DW$13, DW_AT_decl_line(0x1b)
-	.dwattr $C$DW$13, DW_AT_decl_column(0x0d)
-	.dwattr $C$DW$13, DW_AT_TI_max_frame_size(0x04)
+$C$DW$14	.dwtag  DW_TAG_subprogram, DW_AT_name("init_iep_time")
+	.dwattr $C$DW$14, DW_AT_low_pc(||init_iep_time||)
+	.dwattr $C$DW$14, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$14, DW_AT_TI_symbol_name("init_iep_time")
+	.dwattr $C$DW$14, DW_AT_external
+	.dwattr $C$DW$14, DW_AT_TI_begin_file("../../include/nesl_pru_iep.h")
+	.dwattr $C$DW$14, DW_AT_TI_begin_line(0x1b)
+	.dwattr $C$DW$14, DW_AT_TI_begin_column(0x0d)
+	.dwattr $C$DW$14, DW_AT_decl_file("../../include/nesl_pru_iep.h")
+	.dwattr $C$DW$14, DW_AT_decl_line(0x1b)
+	.dwattr $C$DW$14, DW_AT_decl_column(0x0d)
+	.dwattr $C$DW$14, DW_AT_TI_max_frame_size(0x04)
 	.dwpsn	file "../../include/nesl_pru_iep.h",line 28,column 1,is_stmt,address ||init_iep_time||,isa 0
 
 	.dwfde $C$DW$CIE, ||init_iep_time||
-$C$DW$14	.dwtag  DW_TAG_formal_parameter, DW_AT_name("time")
-	.dwattr $C$DW$14, DW_AT_TI_symbol_name("time")
-	.dwattr $C$DW$14, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$14, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$15	.dwtag  DW_TAG_formal_parameter, DW_AT_name("time")
+	.dwattr $C$DW$15, DW_AT_TI_symbol_name("time")
+	.dwattr $C$DW$15, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$15, DW_AT_location[DW_OP_regx 0x38]
 ;----------------------------------------------------------------------
 ;  27 | inline void init_iep_time(struct iep_time *time)                       
 ;----------------------------------------------------------------------
@@ -143,10 +159,10 @@ $C$DW$14	.dwtag  DW_TAG_formal_parameter, DW_AT_name("time")
 	.dwcfi	cfa_offset, 0
         SUB       r2, r2, 0x04          ; [] 
 	.dwcfi	cfa_offset, 4
-$C$DW$15	.dwtag  DW_TAG_variable, DW_AT_name("time")
-	.dwattr $C$DW$15, DW_AT_TI_symbol_name("time")
-	.dwattr $C$DW$15, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$15, DW_AT_location[DW_OP_breg8 0]
+$C$DW$16	.dwtag  DW_TAG_variable, DW_AT_name("time")
+	.dwattr $C$DW$16, DW_AT_TI_symbol_name("time")
+	.dwattr $C$DW$16, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$16, DW_AT_location[DW_OP_breg8 0]
         SBBO      &r14, r2, 0, 4        ; [] |28| time
 	.dwpsn	file "../../include/nesl_pru_iep.h",line 29,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
@@ -195,40 +211,40 @@ $C$DW$15	.dwtag  DW_TAG_variable, DW_AT_name("time")
 	.dwpsn	file "../../include/nesl_pru_iep.h",line 36,column 1,is_stmt,isa 0
         ADD       r2, r2, 0x04          ; [] 
 	.dwcfi	cfa_offset, 0
-$C$DW$16	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$16, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$16, DW_AT_TI_return
+$C$DW$17	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$17, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$17, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$13, DW_AT_TI_end_file("../../include/nesl_pru_iep.h")
-	.dwattr $C$DW$13, DW_AT_TI_end_line(0x24)
-	.dwattr $C$DW$13, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$14, DW_AT_TI_end_file("../../include/nesl_pru_iep.h")
+	.dwattr $C$DW$14, DW_AT_TI_end_line(0x24)
+	.dwattr $C$DW$14, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$13
+	.dwendtag $C$DW$14
 
 	.sect	".text:iep_get_time"
 	.clink
 	.global	||iep_get_time||
 
-$C$DW$17	.dwtag  DW_TAG_subprogram, DW_AT_name("iep_get_time")
-	.dwattr $C$DW$17, DW_AT_low_pc(||iep_get_time||)
-	.dwattr $C$DW$17, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$17, DW_AT_TI_symbol_name("iep_get_time")
-	.dwattr $C$DW$17, DW_AT_external
-	.dwattr $C$DW$17, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$17, DW_AT_TI_begin_file("../../include/nesl_pru_iep.h")
-	.dwattr $C$DW$17, DW_AT_TI_begin_line(0x26)
-	.dwattr $C$DW$17, DW_AT_TI_begin_column(0x11)
-	.dwattr $C$DW$17, DW_AT_decl_file("../../include/nesl_pru_iep.h")
-	.dwattr $C$DW$17, DW_AT_decl_line(0x26)
-	.dwattr $C$DW$17, DW_AT_decl_column(0x11)
-	.dwattr $C$DW$17, DW_AT_TI_max_frame_size(0x14)
+$C$DW$18	.dwtag  DW_TAG_subprogram, DW_AT_name("iep_get_time")
+	.dwattr $C$DW$18, DW_AT_low_pc(||iep_get_time||)
+	.dwattr $C$DW$18, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$18, DW_AT_TI_symbol_name("iep_get_time")
+	.dwattr $C$DW$18, DW_AT_external
+	.dwattr $C$DW$18, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$18, DW_AT_TI_begin_file("../../include/nesl_pru_iep.h")
+	.dwattr $C$DW$18, DW_AT_TI_begin_line(0x26)
+	.dwattr $C$DW$18, DW_AT_TI_begin_column(0x11)
+	.dwattr $C$DW$18, DW_AT_decl_file("../../include/nesl_pru_iep.h")
+	.dwattr $C$DW$18, DW_AT_decl_line(0x26)
+	.dwattr $C$DW$18, DW_AT_decl_column(0x11)
+	.dwattr $C$DW$18, DW_AT_TI_max_frame_size(0x14)
 	.dwpsn	file "../../include/nesl_pru_iep.h",line 39,column 1,is_stmt,address ||iep_get_time||,isa 0
 
 	.dwfde $C$DW$CIE, ||iep_get_time||
-$C$DW$18	.dwtag  DW_TAG_formal_parameter, DW_AT_name("time")
-	.dwattr $C$DW$18, DW_AT_TI_symbol_name("time")
-	.dwattr $C$DW$18, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$18, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$19	.dwtag  DW_TAG_formal_parameter, DW_AT_name("time")
+	.dwattr $C$DW$19, DW_AT_TI_symbol_name("time")
+	.dwattr $C$DW$19, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$19, DW_AT_location[DW_OP_regx 0x38]
 ;----------------------------------------------------------------------
 ;  38 | inline uint64_t iep_get_time(struct iep_time *time)                    
 ;----------------------------------------------------------------------
@@ -247,22 +263,22 @@ $C$DW$18	.dwtag  DW_TAG_formal_parameter, DW_AT_name("time")
 	.dwcfi	cfa_offset, 0
         SUB       r2, r2, 0x14          ; [] 
 	.dwcfi	cfa_offset, 20
-$C$DW$19	.dwtag  DW_TAG_variable, DW_AT_name("time")
-	.dwattr $C$DW$19, DW_AT_TI_symbol_name("time")
-	.dwattr $C$DW$19, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$19, DW_AT_location[DW_OP_breg8 0]
-$C$DW$20	.dwtag  DW_TAG_variable, DW_AT_name("iep_cnt")
-	.dwattr $C$DW$20, DW_AT_TI_symbol_name("iep_cnt")
-	.dwattr $C$DW$20, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$20, DW_AT_location[DW_OP_breg8 4]
-$C$DW$21	.dwtag  DW_TAG_variable, DW_AT_name("last_iep_cnt")
-	.dwattr $C$DW$21, DW_AT_TI_symbol_name("last_iep_cnt")
+$C$DW$20	.dwtag  DW_TAG_variable, DW_AT_name("time")
+	.dwattr $C$DW$20, DW_AT_TI_symbol_name("time")
+	.dwattr $C$DW$20, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$20, DW_AT_location[DW_OP_breg8 0]
+$C$DW$21	.dwtag  DW_TAG_variable, DW_AT_name("iep_cnt")
+	.dwattr $C$DW$21, DW_AT_TI_symbol_name("iep_cnt")
 	.dwattr $C$DW$21, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$21, DW_AT_location[DW_OP_breg8 8]
-$C$DW$22	.dwtag  DW_TAG_variable, DW_AT_name("ts_ns")
-	.dwattr $C$DW$22, DW_AT_TI_symbol_name("ts_ns")
-	.dwattr $C$DW$22, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$22, DW_AT_location[DW_OP_breg8 12]
+	.dwattr $C$DW$21, DW_AT_location[DW_OP_breg8 4]
+$C$DW$22	.dwtag  DW_TAG_variable, DW_AT_name("last_iep_cnt")
+	.dwattr $C$DW$22, DW_AT_TI_symbol_name("last_iep_cnt")
+	.dwattr $C$DW$22, DW_AT_type(*$C$DW$T$20)
+	.dwattr $C$DW$22, DW_AT_location[DW_OP_breg8 8]
+$C$DW$23	.dwtag  DW_TAG_variable, DW_AT_name("ts_ns")
+	.dwattr $C$DW$23, DW_AT_TI_symbol_name("ts_ns")
+	.dwattr $C$DW$23, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$23, DW_AT_location[DW_OP_breg8 12]
         SBBO      &r14, r2, 0, 4        ; [] |39| time
 	.dwpsn	file "../../include/nesl_pru_iep.h",line 40,column 22,is_stmt,isa 0
 ;----------------------------------------------------------------------
@@ -358,47 +374,47 @@ $C$DW$22	.dwtag  DW_TAG_variable, DW_AT_name("ts_ns")
 	.dwpsn	file "../../include/nesl_pru_iep.h",line 57,column 1,is_stmt,isa 0
         ADD       r2, r2, 0x14          ; [] 
 	.dwcfi	cfa_offset, 0
-$C$DW$23	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$23, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$23, DW_AT_TI_return
+$C$DW$24	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$24, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$24, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$17, DW_AT_TI_end_file("../../include/nesl_pru_iep.h")
-	.dwattr $C$DW$17, DW_AT_TI_end_line(0x39)
-	.dwattr $C$DW$17, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$18, DW_AT_TI_end_file("../../include/nesl_pru_iep.h")
+	.dwattr $C$DW$18, DW_AT_TI_end_line(0x39)
+	.dwattr $C$DW$18, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$17
+	.dwendtag $C$DW$18
 
 	.sect	".text:iep_adj_time"
 	.clink
 	.global	||iep_adj_time||
 
-$C$DW$24	.dwtag  DW_TAG_subprogram, DW_AT_name("iep_adj_time")
-	.dwattr $C$DW$24, DW_AT_low_pc(||iep_adj_time||)
-	.dwattr $C$DW$24, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$24, DW_AT_TI_symbol_name("iep_adj_time")
-	.dwattr $C$DW$24, DW_AT_external
-	.dwattr $C$DW$24, DW_AT_TI_begin_file("../../include/nesl_pru_iep.h")
-	.dwattr $C$DW$24, DW_AT_TI_begin_line(0x3b)
-	.dwattr $C$DW$24, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$24, DW_AT_decl_file("../../include/nesl_pru_iep.h")
-	.dwattr $C$DW$24, DW_AT_decl_line(0x3b)
-	.dwattr $C$DW$24, DW_AT_decl_column(0x0d)
-	.dwattr $C$DW$24, DW_AT_TI_max_frame_size(0x14)
+$C$DW$25	.dwtag  DW_TAG_subprogram, DW_AT_name("iep_adj_time")
+	.dwattr $C$DW$25, DW_AT_low_pc(||iep_adj_time||)
+	.dwattr $C$DW$25, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$25, DW_AT_TI_symbol_name("iep_adj_time")
+	.dwattr $C$DW$25, DW_AT_external
+	.dwattr $C$DW$25, DW_AT_TI_begin_file("../../include/nesl_pru_iep.h")
+	.dwattr $C$DW$25, DW_AT_TI_begin_line(0x3b)
+	.dwattr $C$DW$25, DW_AT_TI_begin_column(0x0d)
+	.dwattr $C$DW$25, DW_AT_decl_file("../../include/nesl_pru_iep.h")
+	.dwattr $C$DW$25, DW_AT_decl_line(0x3b)
+	.dwattr $C$DW$25, DW_AT_decl_column(0x0d)
+	.dwattr $C$DW$25, DW_AT_TI_max_frame_size(0x14)
 	.dwpsn	file "../../include/nesl_pru_iep.h",line 61,column 1,is_stmt,address ||iep_adj_time||,isa 0
 
 	.dwfde $C$DW$CIE, ||iep_adj_time||
-$C$DW$25	.dwtag  DW_TAG_formal_parameter, DW_AT_name("time")
-	.dwattr $C$DW$25, DW_AT_TI_symbol_name("time")
-	.dwattr $C$DW$25, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$25, DW_AT_location[DW_OP_regx 0x38]
-$C$DW$26	.dwtag  DW_TAG_formal_parameter, DW_AT_name("ts_ns")
-	.dwattr $C$DW$26, DW_AT_TI_symbol_name("ts_ns")
-	.dwattr $C$DW$26, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$26, DW_AT_location[DW_OP_regx 0x3c]
-$C$DW$27	.dwtag  DW_TAG_formal_parameter, DW_AT_name("external_ts_ns")
-	.dwattr $C$DW$27, DW_AT_TI_symbol_name("external_ts_ns")
+$C$DW$26	.dwtag  DW_TAG_formal_parameter, DW_AT_name("time")
+	.dwattr $C$DW$26, DW_AT_TI_symbol_name("time")
+	.dwattr $C$DW$26, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$26, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$27	.dwtag  DW_TAG_formal_parameter, DW_AT_name("ts_ns")
+	.dwattr $C$DW$27, DW_AT_TI_symbol_name("ts_ns")
 	.dwattr $C$DW$27, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$27, DW_AT_location[DW_OP_regx 0x44]
+	.dwattr $C$DW$27, DW_AT_location[DW_OP_regx 0x3c]
+$C$DW$28	.dwtag  DW_TAG_formal_parameter, DW_AT_name("external_ts_ns")
+	.dwattr $C$DW$28, DW_AT_TI_symbol_name("external_ts_ns")
+	.dwattr $C$DW$28, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$28, DW_AT_location[DW_OP_regx 0x44]
 ;----------------------------------------------------------------------
 ;  59 | inline void iep_adj_time(struct iep_time *time,                        
 ;  60 | uint64_t ts_ns, uint64_t external_ts_ns)                               
@@ -418,18 +434,18 @@ $C$DW$27	.dwtag  DW_TAG_formal_parameter, DW_AT_name("external_ts_ns")
 	.dwcfi	cfa_offset, 0
         SUB       r2, r2, 0x14          ; [] 
 	.dwcfi	cfa_offset, 20
-$C$DW$28	.dwtag  DW_TAG_variable, DW_AT_name("time")
-	.dwattr $C$DW$28, DW_AT_TI_symbol_name("time")
-	.dwattr $C$DW$28, DW_AT_type(*$C$DW$T$33)
-	.dwattr $C$DW$28, DW_AT_location[DW_OP_breg8 0]
-$C$DW$29	.dwtag  DW_TAG_variable, DW_AT_name("ts_ns")
-	.dwattr $C$DW$29, DW_AT_TI_symbol_name("ts_ns")
-	.dwattr $C$DW$29, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$29, DW_AT_location[DW_OP_breg8 4]
-$C$DW$30	.dwtag  DW_TAG_variable, DW_AT_name("external_ts_ns")
-	.dwattr $C$DW$30, DW_AT_TI_symbol_name("external_ts_ns")
+$C$DW$29	.dwtag  DW_TAG_variable, DW_AT_name("time")
+	.dwattr $C$DW$29, DW_AT_TI_symbol_name("time")
+	.dwattr $C$DW$29, DW_AT_type(*$C$DW$T$33)
+	.dwattr $C$DW$29, DW_AT_location[DW_OP_breg8 0]
+$C$DW$30	.dwtag  DW_TAG_variable, DW_AT_name("ts_ns")
+	.dwattr $C$DW$30, DW_AT_TI_symbol_name("ts_ns")
 	.dwattr $C$DW$30, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$30, DW_AT_location[DW_OP_breg8 12]
+	.dwattr $C$DW$30, DW_AT_location[DW_OP_breg8 4]
+$C$DW$31	.dwtag  DW_TAG_variable, DW_AT_name("external_ts_ns")
+	.dwattr $C$DW$31, DW_AT_TI_symbol_name("external_ts_ns")
+	.dwattr $C$DW$31, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$31, DW_AT_location[DW_OP_breg8 12]
         SBBO      &r17, r2, 12, 8       ; [] |61| external_ts_ns
         SBBO      &r15, r2, 4, 8        ; [] |61| ts_ns
         SBBO      &r14, r2, 0, 4        ; [] |61| time
@@ -449,40 +465,40 @@ $C$DW$30	.dwtag  DW_TAG_variable, DW_AT_name("external_ts_ns")
 	.dwpsn	file "../../include/nesl_pru_iep.h",line 63,column 1,is_stmt,isa 0
         ADD       r2, r2, 0x14          ; [] 
 	.dwcfi	cfa_offset, 0
-$C$DW$31	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$31, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$31, DW_AT_TI_return
+$C$DW$32	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$32, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$32, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$24, DW_AT_TI_end_file("../../include/nesl_pru_iep.h")
-	.dwattr $C$DW$24, DW_AT_TI_end_line(0x3f)
-	.dwattr $C$DW$24, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$25, DW_AT_TI_end_file("../../include/nesl_pru_iep.h")
+	.dwattr $C$DW$25, DW_AT_TI_end_line(0x3f)
+	.dwattr $C$DW$25, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$24
+	.dwendtag $C$DW$25
 
 	.sect	".text:read_pin"
 	.clink
 	.global	||read_pin||
 
-$C$DW$32	.dwtag  DW_TAG_subprogram, DW_AT_name("read_pin")
-	.dwattr $C$DW$32, DW_AT_low_pc(||read_pin||)
-	.dwattr $C$DW$32, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$32, DW_AT_TI_symbol_name("read_pin")
-	.dwattr $C$DW$32, DW_AT_external
-	.dwattr $C$DW$32, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$32, DW_AT_TI_begin_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$32, DW_AT_TI_begin_line(0x2f)
-	.dwattr $C$DW$32, DW_AT_TI_begin_column(0x15)
-	.dwattr $C$DW$32, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$32, DW_AT_decl_line(0x2f)
-	.dwattr $C$DW$32, DW_AT_decl_column(0x15)
-	.dwattr $C$DW$32, DW_AT_TI_max_frame_size(0x04)
+$C$DW$33	.dwtag  DW_TAG_subprogram, DW_AT_name("read_pin")
+	.dwattr $C$DW$33, DW_AT_low_pc(||read_pin||)
+	.dwattr $C$DW$33, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$33, DW_AT_TI_symbol_name("read_pin")
+	.dwattr $C$DW$33, DW_AT_external
+	.dwattr $C$DW$33, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$33, DW_AT_TI_begin_file("../../include/nesl_pru_gpio.h")
+	.dwattr $C$DW$33, DW_AT_TI_begin_line(0x2f)
+	.dwattr $C$DW$33, DW_AT_TI_begin_column(0x15)
+	.dwattr $C$DW$33, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
+	.dwattr $C$DW$33, DW_AT_decl_line(0x2f)
+	.dwattr $C$DW$33, DW_AT_decl_column(0x15)
+	.dwattr $C$DW$33, DW_AT_TI_max_frame_size(0x04)
 	.dwpsn	file "../../include/nesl_pru_gpio.h",line 48,column 1,is_stmt,address ||read_pin||,isa 0
 
 	.dwfde $C$DW$CIE, ||read_pin||
-$C$DW$33	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pin")
-	.dwattr $C$DW$33, DW_AT_TI_symbol_name("pin")
-	.dwattr $C$DW$33, DW_AT_type(*$C$DW$T$39)
-	.dwattr $C$DW$33, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$34	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pin")
+	.dwattr $C$DW$34, DW_AT_TI_symbol_name("pin")
+	.dwattr $C$DW$34, DW_AT_type(*$C$DW$T$39)
+	.dwattr $C$DW$34, DW_AT_location[DW_OP_regx 0x38]
 ;----------------------------------------------------------------------
 ;  47 | inline unsigned int read_pin(enum pru_pin pin)                         
 ;----------------------------------------------------------------------
@@ -501,10 +517,10 @@ $C$DW$33	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pin")
 	.dwcfi	cfa_offset, 0
         SUB       r2, r2, 0x04          ; [] 
 	.dwcfi	cfa_offset, 4
-$C$DW$34	.dwtag  DW_TAG_variable, DW_AT_name("pin")
-	.dwattr $C$DW$34, DW_AT_TI_symbol_name("pin")
-	.dwattr $C$DW$34, DW_AT_type(*$C$DW$T$39)
-	.dwattr $C$DW$34, DW_AT_location[DW_OP_breg8 0]
+$C$DW$35	.dwtag  DW_TAG_variable, DW_AT_name("pin")
+	.dwattr $C$DW$35, DW_AT_TI_symbol_name("pin")
+	.dwattr $C$DW$35, DW_AT_type(*$C$DW$T$39)
+	.dwattr $C$DW$35, DW_AT_location[DW_OP_breg8 0]
         SBBO      &r14, r2, 0, 4        ; [] |48| pin
 	.dwpsn	file "../../include/nesl_pru_gpio.h",line 49,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
@@ -515,39 +531,39 @@ $C$DW$34	.dwtag  DW_TAG_variable, DW_AT_name("pin")
 	.dwpsn	file "../../include/nesl_pru_gpio.h",line 50,column 1,is_stmt,isa 0
         ADD       r2, r2, 0x04          ; [] 
 	.dwcfi	cfa_offset, 0
-$C$DW$35	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$35, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$35, DW_AT_TI_return
+$C$DW$36	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$36, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$36, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$32, DW_AT_TI_end_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$32, DW_AT_TI_end_line(0x32)
-	.dwattr $C$DW$32, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$33, DW_AT_TI_end_file("../../include/nesl_pru_gpio.h")
+	.dwattr $C$DW$33, DW_AT_TI_end_line(0x32)
+	.dwattr $C$DW$33, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$32
+	.dwendtag $C$DW$33
 
 	.sect	".text:toggle_pin"
 	.clink
 	.global	||toggle_pin||
 
-$C$DW$36	.dwtag  DW_TAG_subprogram, DW_AT_name("toggle_pin")
-	.dwattr $C$DW$36, DW_AT_low_pc(||toggle_pin||)
-	.dwattr $C$DW$36, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$36, DW_AT_TI_symbol_name("toggle_pin")
-	.dwattr $C$DW$36, DW_AT_external
-	.dwattr $C$DW$36, DW_AT_TI_begin_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$36, DW_AT_TI_begin_line(0x34)
-	.dwattr $C$DW$36, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$36, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$36, DW_AT_decl_line(0x34)
-	.dwattr $C$DW$36, DW_AT_decl_column(0x0d)
-	.dwattr $C$DW$36, DW_AT_TI_max_frame_size(0x04)
+$C$DW$37	.dwtag  DW_TAG_subprogram, DW_AT_name("toggle_pin")
+	.dwattr $C$DW$37, DW_AT_low_pc(||toggle_pin||)
+	.dwattr $C$DW$37, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$37, DW_AT_TI_symbol_name("toggle_pin")
+	.dwattr $C$DW$37, DW_AT_external
+	.dwattr $C$DW$37, DW_AT_TI_begin_file("../../include/nesl_pru_gpio.h")
+	.dwattr $C$DW$37, DW_AT_TI_begin_line(0x34)
+	.dwattr $C$DW$37, DW_AT_TI_begin_column(0x0d)
+	.dwattr $C$DW$37, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
+	.dwattr $C$DW$37, DW_AT_decl_line(0x34)
+	.dwattr $C$DW$37, DW_AT_decl_column(0x0d)
+	.dwattr $C$DW$37, DW_AT_TI_max_frame_size(0x04)
 	.dwpsn	file "../../include/nesl_pru_gpio.h",line 53,column 1,is_stmt,address ||toggle_pin||,isa 0
 
 	.dwfde $C$DW$CIE, ||toggle_pin||
-$C$DW$37	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pin")
-	.dwattr $C$DW$37, DW_AT_TI_symbol_name("pin")
-	.dwattr $C$DW$37, DW_AT_type(*$C$DW$T$39)
-	.dwattr $C$DW$37, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$38	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pin")
+	.dwattr $C$DW$38, DW_AT_TI_symbol_name("pin")
+	.dwattr $C$DW$38, DW_AT_type(*$C$DW$T$39)
+	.dwattr $C$DW$38, DW_AT_location[DW_OP_regx 0x38]
 ;----------------------------------------------------------------------
 ;  52 | inline void toggle_pin(enum pru_pin pin)                               
 ;----------------------------------------------------------------------
@@ -566,10 +582,10 @@ $C$DW$37	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pin")
 	.dwcfi	cfa_offset, 0
         SUB       r2, r2, 0x04          ; [] 
 	.dwcfi	cfa_offset, 4
-$C$DW$38	.dwtag  DW_TAG_variable, DW_AT_name("pin")
-	.dwattr $C$DW$38, DW_AT_TI_symbol_name("pin")
-	.dwattr $C$DW$38, DW_AT_type(*$C$DW$T$39)
-	.dwattr $C$DW$38, DW_AT_location[DW_OP_breg8 0]
+$C$DW$39	.dwtag  DW_TAG_variable, DW_AT_name("pin")
+	.dwattr $C$DW$39, DW_AT_TI_symbol_name("pin")
+	.dwattr $C$DW$39, DW_AT_type(*$C$DW$T$39)
+	.dwattr $C$DW$39, DW_AT_location[DW_OP_breg8 0]
         SBBO      &r14, r2, 0, 4        ; [] |53| pin
 	.dwpsn	file "../../include/nesl_pru_gpio.h",line 54,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
@@ -580,39 +596,39 @@ $C$DW$38	.dwtag  DW_TAG_variable, DW_AT_name("pin")
 	.dwpsn	file "../../include/nesl_pru_gpio.h",line 55,column 1,is_stmt,isa 0
         ADD       r2, r2, 0x04          ; [] 
 	.dwcfi	cfa_offset, 0
-$C$DW$39	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$39, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$39, DW_AT_TI_return
+$C$DW$40	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$40, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$40, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$36, DW_AT_TI_end_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$36, DW_AT_TI_end_line(0x37)
-	.dwattr $C$DW$36, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$37, DW_AT_TI_end_file("../../include/nesl_pru_gpio.h")
+	.dwattr $C$DW$37, DW_AT_TI_end_line(0x37)
+	.dwattr $C$DW$37, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$36
+	.dwendtag $C$DW$37
 
 	.sect	".text:assert_pin"
 	.clink
 	.global	||assert_pin||
 
-$C$DW$40	.dwtag  DW_TAG_subprogram, DW_AT_name("assert_pin")
-	.dwattr $C$DW$40, DW_AT_low_pc(||assert_pin||)
-	.dwattr $C$DW$40, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$40, DW_AT_TI_symbol_name("assert_pin")
-	.dwattr $C$DW$40, DW_AT_external
-	.dwattr $C$DW$40, DW_AT_TI_begin_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$40, DW_AT_TI_begin_line(0x39)
-	.dwattr $C$DW$40, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$40, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$40, DW_AT_decl_line(0x39)
-	.dwattr $C$DW$40, DW_AT_decl_column(0x0d)
-	.dwattr $C$DW$40, DW_AT_TI_max_frame_size(0x04)
+$C$DW$41	.dwtag  DW_TAG_subprogram, DW_AT_name("assert_pin")
+	.dwattr $C$DW$41, DW_AT_low_pc(||assert_pin||)
+	.dwattr $C$DW$41, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$41, DW_AT_TI_symbol_name("assert_pin")
+	.dwattr $C$DW$41, DW_AT_external
+	.dwattr $C$DW$41, DW_AT_TI_begin_file("../../include/nesl_pru_gpio.h")
+	.dwattr $C$DW$41, DW_AT_TI_begin_line(0x39)
+	.dwattr $C$DW$41, DW_AT_TI_begin_column(0x0d)
+	.dwattr $C$DW$41, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
+	.dwattr $C$DW$41, DW_AT_decl_line(0x39)
+	.dwattr $C$DW$41, DW_AT_decl_column(0x0d)
+	.dwattr $C$DW$41, DW_AT_TI_max_frame_size(0x04)
 	.dwpsn	file "../../include/nesl_pru_gpio.h",line 58,column 1,is_stmt,address ||assert_pin||,isa 0
 
 	.dwfde $C$DW$CIE, ||assert_pin||
-$C$DW$41	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pin")
-	.dwattr $C$DW$41, DW_AT_TI_symbol_name("pin")
-	.dwattr $C$DW$41, DW_AT_type(*$C$DW$T$39)
-	.dwattr $C$DW$41, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$42	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pin")
+	.dwattr $C$DW$42, DW_AT_TI_symbol_name("pin")
+	.dwattr $C$DW$42, DW_AT_type(*$C$DW$T$39)
+	.dwattr $C$DW$42, DW_AT_location[DW_OP_regx 0x38]
 ;----------------------------------------------------------------------
 ;  57 | inline void assert_pin(enum pru_pin pin)                               
 ;----------------------------------------------------------------------
@@ -631,10 +647,10 @@ $C$DW$41	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pin")
 	.dwcfi	cfa_offset, 0
         SUB       r2, r2, 0x04          ; [] 
 	.dwcfi	cfa_offset, 4
-$C$DW$42	.dwtag  DW_TAG_variable, DW_AT_name("pin")
-	.dwattr $C$DW$42, DW_AT_TI_symbol_name("pin")
-	.dwattr $C$DW$42, DW_AT_type(*$C$DW$T$39)
-	.dwattr $C$DW$42, DW_AT_location[DW_OP_breg8 0]
+$C$DW$43	.dwtag  DW_TAG_variable, DW_AT_name("pin")
+	.dwattr $C$DW$43, DW_AT_TI_symbol_name("pin")
+	.dwattr $C$DW$43, DW_AT_type(*$C$DW$T$39)
+	.dwattr $C$DW$43, DW_AT_location[DW_OP_breg8 0]
         SBBO      &r14, r2, 0, 4        ; [] |58| pin
 	.dwpsn	file "../../include/nesl_pru_gpio.h",line 59,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
@@ -645,39 +661,39 @@ $C$DW$42	.dwtag  DW_TAG_variable, DW_AT_name("pin")
 	.dwpsn	file "../../include/nesl_pru_gpio.h",line 60,column 1,is_stmt,isa 0
         ADD       r2, r2, 0x04          ; [] 
 	.dwcfi	cfa_offset, 0
-$C$DW$43	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$43, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$43, DW_AT_TI_return
+$C$DW$44	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$44, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$44, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$40, DW_AT_TI_end_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$40, DW_AT_TI_end_line(0x3c)
-	.dwattr $C$DW$40, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$41, DW_AT_TI_end_file("../../include/nesl_pru_gpio.h")
+	.dwattr $C$DW$41, DW_AT_TI_end_line(0x3c)
+	.dwattr $C$DW$41, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$40
+	.dwendtag $C$DW$41
 
 	.sect	".text:deassert_pin"
 	.clink
 	.global	||deassert_pin||
 
-$C$DW$44	.dwtag  DW_TAG_subprogram, DW_AT_name("deassert_pin")
-	.dwattr $C$DW$44, DW_AT_low_pc(||deassert_pin||)
-	.dwattr $C$DW$44, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$44, DW_AT_TI_symbol_name("deassert_pin")
-	.dwattr $C$DW$44, DW_AT_external
-	.dwattr $C$DW$44, DW_AT_TI_begin_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$44, DW_AT_TI_begin_line(0x3e)
-	.dwattr $C$DW$44, DW_AT_TI_begin_column(0x0d)
-	.dwattr $C$DW$44, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$44, DW_AT_decl_line(0x3e)
-	.dwattr $C$DW$44, DW_AT_decl_column(0x0d)
-	.dwattr $C$DW$44, DW_AT_TI_max_frame_size(0x04)
+$C$DW$45	.dwtag  DW_TAG_subprogram, DW_AT_name("deassert_pin")
+	.dwattr $C$DW$45, DW_AT_low_pc(||deassert_pin||)
+	.dwattr $C$DW$45, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$45, DW_AT_TI_symbol_name("deassert_pin")
+	.dwattr $C$DW$45, DW_AT_external
+	.dwattr $C$DW$45, DW_AT_TI_begin_file("../../include/nesl_pru_gpio.h")
+	.dwattr $C$DW$45, DW_AT_TI_begin_line(0x3e)
+	.dwattr $C$DW$45, DW_AT_TI_begin_column(0x0d)
+	.dwattr $C$DW$45, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
+	.dwattr $C$DW$45, DW_AT_decl_line(0x3e)
+	.dwattr $C$DW$45, DW_AT_decl_column(0x0d)
+	.dwattr $C$DW$45, DW_AT_TI_max_frame_size(0x04)
 	.dwpsn	file "../../include/nesl_pru_gpio.h",line 63,column 1,is_stmt,address ||deassert_pin||,isa 0
 
 	.dwfde $C$DW$CIE, ||deassert_pin||
-$C$DW$45	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pin")
-	.dwattr $C$DW$45, DW_AT_TI_symbol_name("pin")
-	.dwattr $C$DW$45, DW_AT_type(*$C$DW$T$39)
-	.dwattr $C$DW$45, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$46	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pin")
+	.dwattr $C$DW$46, DW_AT_TI_symbol_name("pin")
+	.dwattr $C$DW$46, DW_AT_type(*$C$DW$T$39)
+	.dwattr $C$DW$46, DW_AT_location[DW_OP_regx 0x38]
 ;----------------------------------------------------------------------
 ;  62 | inline void deassert_pin(enum pru_pin pin)                             
 ;----------------------------------------------------------------------
@@ -696,10 +712,10 @@ $C$DW$45	.dwtag  DW_TAG_formal_parameter, DW_AT_name("pin")
 	.dwcfi	cfa_offset, 0
         SUB       r2, r2, 0x04          ; [] 
 	.dwcfi	cfa_offset, 4
-$C$DW$46	.dwtag  DW_TAG_variable, DW_AT_name("pin")
-	.dwattr $C$DW$46, DW_AT_TI_symbol_name("pin")
-	.dwattr $C$DW$46, DW_AT_type(*$C$DW$T$39)
-	.dwattr $C$DW$46, DW_AT_location[DW_OP_breg8 0]
+$C$DW$47	.dwtag  DW_TAG_variable, DW_AT_name("pin")
+	.dwattr $C$DW$47, DW_AT_TI_symbol_name("pin")
+	.dwattr $C$DW$47, DW_AT_type(*$C$DW$T$39)
+	.dwattr $C$DW$47, DW_AT_location[DW_OP_breg8 0]
         SBBO      &r14, r2, 0, 4        ; [] |63| pin
 	.dwpsn	file "../../include/nesl_pru_gpio.h",line 64,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
@@ -711,32 +727,32 @@ $C$DW$46	.dwtag  DW_TAG_variable, DW_AT_name("pin")
 	.dwpsn	file "../../include/nesl_pru_gpio.h",line 65,column 1,is_stmt,isa 0
         ADD       r2, r2, 0x04          ; [] 
 	.dwcfi	cfa_offset, 0
-$C$DW$47	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$47, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$47, DW_AT_TI_return
+$C$DW$48	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$48, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$48, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$44, DW_AT_TI_end_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$44, DW_AT_TI_end_line(0x41)
-	.dwattr $C$DW$44, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$45, DW_AT_TI_end_file("../../include/nesl_pru_gpio.h")
+	.dwattr $C$DW$45, DW_AT_TI_end_line(0x41)
+	.dwattr $C$DW$45, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$44
+	.dwendtag $C$DW$45
 
 	.sect	".text:init_ocp"
 	.clink
 	.global	||init_ocp||
 
-$C$DW$48	.dwtag  DW_TAG_subprogram, DW_AT_name("init_ocp")
-	.dwattr $C$DW$48, DW_AT_low_pc(||init_ocp||)
-	.dwattr $C$DW$48, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$48, DW_AT_TI_symbol_name("init_ocp")
-	.dwattr $C$DW$48, DW_AT_external
-	.dwattr $C$DW$48, DW_AT_TI_begin_file("../../include/nesl_pru_regs.h")
-	.dwattr $C$DW$48, DW_AT_TI_begin_line(0x22)
-	.dwattr $C$DW$48, DW_AT_TI_begin_column(0x06)
-	.dwattr $C$DW$48, DW_AT_decl_file("../../include/nesl_pru_regs.h")
-	.dwattr $C$DW$48, DW_AT_decl_line(0x22)
-	.dwattr $C$DW$48, DW_AT_decl_column(0x06)
-	.dwattr $C$DW$48, DW_AT_TI_max_frame_size(0x00)
+$C$DW$49	.dwtag  DW_TAG_subprogram, DW_AT_name("init_ocp")
+	.dwattr $C$DW$49, DW_AT_low_pc(||init_ocp||)
+	.dwattr $C$DW$49, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$49, DW_AT_TI_symbol_name("init_ocp")
+	.dwattr $C$DW$49, DW_AT_external
+	.dwattr $C$DW$49, DW_AT_TI_begin_file("../../include/nesl_pru_regs.h")
+	.dwattr $C$DW$49, DW_AT_TI_begin_line(0x22)
+	.dwattr $C$DW$49, DW_AT_TI_begin_column(0x06)
+	.dwattr $C$DW$49, DW_AT_decl_file("../../include/nesl_pru_regs.h")
+	.dwattr $C$DW$49, DW_AT_decl_line(0x22)
+	.dwattr $C$DW$49, DW_AT_decl_column(0x06)
+	.dwattr $C$DW$49, DW_AT_TI_max_frame_size(0x00)
 	.dwpsn	file "../../include/nesl_pru_regs.h",line 35,column 1,is_stmt,address ||init_ocp||,isa 0
 
 	.dwfde $C$DW$CIE, ||init_ocp||
@@ -765,39 +781,39 @@ $C$DW$48	.dwtag  DW_TAG_subprogram, DW_AT_name("init_ocp")
         CLR       r1, r1, 0x00000004    ; [] |36| 
         SBBO      &r1, r0, 0, 4         ; [] |36| 
 	.dwpsn	file "../../include/nesl_pru_regs.h",line 37,column 1,is_stmt,isa 0
-$C$DW$49	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$49, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$49, DW_AT_TI_return
+$C$DW$50	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$50, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$50, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$48, DW_AT_TI_end_file("../../include/nesl_pru_regs.h")
-	.dwattr $C$DW$48, DW_AT_TI_end_line(0x25)
-	.dwattr $C$DW$48, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$49, DW_AT_TI_end_file("../../include/nesl_pru_regs.h")
+	.dwattr $C$DW$49, DW_AT_TI_end_line(0x25)
+	.dwattr $C$DW$49, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$48
+	.dwendtag $C$DW$49
 
 	.sect	".text:init_rbuffer"
 	.clink
 	.global	||init_rbuffer||
 
-$C$DW$50	.dwtag  DW_TAG_subprogram, DW_AT_name("init_rbuffer")
-	.dwattr $C$DW$50, DW_AT_low_pc(||init_rbuffer||)
-	.dwattr $C$DW$50, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$50, DW_AT_TI_symbol_name("init_rbuffer")
-	.dwattr $C$DW$50, DW_AT_external
-	.dwattr $C$DW$50, DW_AT_TI_begin_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$50, DW_AT_TI_begin_line(0x1a)
-	.dwattr $C$DW$50, DW_AT_TI_begin_column(0x01)
-	.dwattr $C$DW$50, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$50, DW_AT_decl_line(0x1a)
-	.dwattr $C$DW$50, DW_AT_decl_column(0x01)
-	.dwattr $C$DW$50, DW_AT_TI_max_frame_size(0x06)
+$C$DW$51	.dwtag  DW_TAG_subprogram, DW_AT_name("init_rbuffer")
+	.dwattr $C$DW$51, DW_AT_low_pc(||init_rbuffer||)
+	.dwattr $C$DW$51, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$51, DW_AT_TI_symbol_name("init_rbuffer")
+	.dwattr $C$DW$51, DW_AT_external
+	.dwattr $C$DW$51, DW_AT_TI_begin_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$51, DW_AT_TI_begin_line(0x1a)
+	.dwattr $C$DW$51, DW_AT_TI_begin_column(0x01)
+	.dwattr $C$DW$51, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$51, DW_AT_decl_line(0x1a)
+	.dwattr $C$DW$51, DW_AT_decl_column(0x01)
+	.dwattr $C$DW$51, DW_AT_TI_max_frame_size(0x06)
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 27,column 1,is_stmt,address ||init_rbuffer||,isa 0
 
 	.dwfde $C$DW$CIE, ||init_rbuffer||
-$C$DW$51	.dwtag  DW_TAG_formal_parameter, DW_AT_name("rbuf")
-	.dwattr $C$DW$51, DW_AT_TI_symbol_name("rbuf")
-	.dwattr $C$DW$51, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$51, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$52	.dwtag  DW_TAG_formal_parameter, DW_AT_name("rbuf")
+	.dwattr $C$DW$52, DW_AT_TI_symbol_name("rbuf")
+	.dwattr $C$DW$52, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$52, DW_AT_location[DW_OP_regx 0x38]
 ;----------------------------------------------------------------------
 ;  26 | init_rbuffer(struct rbuffer *rbuf)                                     
 ;----------------------------------------------------------------------
@@ -819,10 +835,10 @@ $C$DW$51	.dwtag  DW_TAG_formal_parameter, DW_AT_name("rbuf")
         SBBO      &r3.b2, r2, 4, 2      ; [] 
 	.dwcfi	save_reg_to_mem, 14, -2
 	.dwcfi	save_reg_to_mem, 15, -1
-$C$DW$52	.dwtag  DW_TAG_variable, DW_AT_name("rbuf")
-	.dwattr $C$DW$52, DW_AT_TI_symbol_name("rbuf")
-	.dwattr $C$DW$52, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$52, DW_AT_location[DW_OP_breg8 0]
+$C$DW$53	.dwtag  DW_TAG_variable, DW_AT_name("rbuf")
+	.dwattr $C$DW$53, DW_AT_TI_symbol_name("rbuf")
+	.dwattr $C$DW$53, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$53, DW_AT_location[DW_OP_breg8 0]
         SBBO      &r14, r2, 0, 4        ; [] |27| rbuf
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 28,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
@@ -830,10 +846,10 @@ $C$DW$52	.dwtag  DW_TAG_variable, DW_AT_name("rbuf")
 ;----------------------------------------------------------------------
         ZERO      &r15, 4               ; [] |28| 
         LDI       r16, 0x0404           ; [] |28| 
-$C$DW$53	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$53, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$53, DW_AT_name("memset")
-	.dwattr $C$DW$53, DW_AT_TI_call
+$C$DW$54	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$54, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$54, DW_AT_name("memset")
+	.dwattr $C$DW$54, DW_AT_TI_call
         JAL       r3.w2, ||memset||     ; [] |28| memset
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 29,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
@@ -855,44 +871,44 @@ $C$DW$53	.dwtag  DW_TAG_TI_branch
 	.dwcfi	restore_reg, 15
         ADD       r2, r2, 0x06          ; [] 
 	.dwcfi	cfa_offset, 0
-$C$DW$54	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$54, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$54, DW_AT_TI_return
+$C$DW$55	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$55, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$55, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$50, DW_AT_TI_end_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$50, DW_AT_TI_end_line(0x1f)
-	.dwattr $C$DW$50, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$51, DW_AT_TI_end_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$51, DW_AT_TI_end_line(0x1f)
+	.dwattr $C$DW$51, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$50
+	.dwendtag $C$DW$51
 
 	.sect	".text:rbuf_write_uint32"
 	.clink
 	.global	||rbuf_write_uint32||
 
-$C$DW$55	.dwtag  DW_TAG_subprogram, DW_AT_name("rbuf_write_uint32")
-	.dwattr $C$DW$55, DW_AT_low_pc(||rbuf_write_uint32||)
-	.dwattr $C$DW$55, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$55, DW_AT_TI_symbol_name("rbuf_write_uint32")
-	.dwattr $C$DW$55, DW_AT_external
-	.dwattr $C$DW$55, DW_AT_type(*$C$DW$T$8)
-	.dwattr $C$DW$55, DW_AT_TI_begin_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$55, DW_AT_TI_begin_line(0x22)
-	.dwattr $C$DW$55, DW_AT_TI_begin_column(0x01)
-	.dwattr $C$DW$55, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$55, DW_AT_decl_line(0x22)
-	.dwattr $C$DW$55, DW_AT_decl_column(0x01)
-	.dwattr $C$DW$55, DW_AT_TI_max_frame_size(0x0a)
+$C$DW$56	.dwtag  DW_TAG_subprogram, DW_AT_name("rbuf_write_uint32")
+	.dwattr $C$DW$56, DW_AT_low_pc(||rbuf_write_uint32||)
+	.dwattr $C$DW$56, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$56, DW_AT_TI_symbol_name("rbuf_write_uint32")
+	.dwattr $C$DW$56, DW_AT_external
+	.dwattr $C$DW$56, DW_AT_type(*$C$DW$T$8)
+	.dwattr $C$DW$56, DW_AT_TI_begin_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$56, DW_AT_TI_begin_line(0x22)
+	.dwattr $C$DW$56, DW_AT_TI_begin_column(0x01)
+	.dwattr $C$DW$56, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$56, DW_AT_decl_line(0x22)
+	.dwattr $C$DW$56, DW_AT_decl_column(0x01)
+	.dwattr $C$DW$56, DW_AT_TI_max_frame_size(0x0a)
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 35,column 1,is_stmt,address ||rbuf_write_uint32||,isa 0
 
 	.dwfde $C$DW$CIE, ||rbuf_write_uint32||
-$C$DW$56	.dwtag  DW_TAG_formal_parameter, DW_AT_name("rbuf")
-	.dwattr $C$DW$56, DW_AT_TI_symbol_name("rbuf")
-	.dwattr $C$DW$56, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$56, DW_AT_location[DW_OP_regx 0x38]
-$C$DW$57	.dwtag  DW_TAG_formal_parameter, DW_AT_name("data")
-	.dwattr $C$DW$57, DW_AT_TI_symbol_name("data")
-	.dwattr $C$DW$57, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$57, DW_AT_location[DW_OP_regx 0x3c]
+$C$DW$57	.dwtag  DW_TAG_formal_parameter, DW_AT_name("rbuf")
+	.dwattr $C$DW$57, DW_AT_TI_symbol_name("rbuf")
+	.dwattr $C$DW$57, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$57, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$58	.dwtag  DW_TAG_formal_parameter, DW_AT_name("data")
+	.dwattr $C$DW$58, DW_AT_TI_symbol_name("data")
+	.dwattr $C$DW$58, DW_AT_type(*$C$DW$T$20)
+	.dwattr $C$DW$58, DW_AT_location[DW_OP_regx 0x3c]
 ;----------------------------------------------------------------------
 ;  34 | rbuf_write_uint32(struct rbuffer *rbuf, uint32_t data)                 
 ;----------------------------------------------------------------------
@@ -911,18 +927,18 @@ $C$DW$57	.dwtag  DW_TAG_formal_parameter, DW_AT_name("data")
 	.dwcfi	cfa_offset, 0
         SUB       r2, r2, 0x0a          ; [] 
 	.dwcfi	cfa_offset, 10
-$C$DW$58	.dwtag  DW_TAG_variable, DW_AT_name("rbuf")
-	.dwattr $C$DW$58, DW_AT_TI_symbol_name("rbuf")
-	.dwattr $C$DW$58, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$58, DW_AT_location[DW_OP_breg8 0]
-$C$DW$59	.dwtag  DW_TAG_variable, DW_AT_name("data")
-	.dwattr $C$DW$59, DW_AT_TI_symbol_name("data")
-	.dwattr $C$DW$59, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$59, DW_AT_location[DW_OP_breg8 4]
-$C$DW$60	.dwtag  DW_TAG_variable, DW_AT_name("p")
-	.dwattr $C$DW$60, DW_AT_TI_symbol_name("p")
-	.dwattr $C$DW$60, DW_AT_type(*$C$DW$T$23)
-	.dwattr $C$DW$60, DW_AT_location[DW_OP_breg8 8]
+$C$DW$59	.dwtag  DW_TAG_variable, DW_AT_name("rbuf")
+	.dwattr $C$DW$59, DW_AT_TI_symbol_name("rbuf")
+	.dwattr $C$DW$59, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$59, DW_AT_location[DW_OP_breg8 0]
+$C$DW$60	.dwtag  DW_TAG_variable, DW_AT_name("data")
+	.dwattr $C$DW$60, DW_AT_TI_symbol_name("data")
+	.dwattr $C$DW$60, DW_AT_type(*$C$DW$T$20)
+	.dwattr $C$DW$60, DW_AT_location[DW_OP_breg8 4]
+$C$DW$61	.dwtag  DW_TAG_variable, DW_AT_name("p")
+	.dwattr $C$DW$61, DW_AT_TI_symbol_name("p")
+	.dwattr $C$DW$61, DW_AT_type(*$C$DW$T$23)
+	.dwattr $C$DW$61, DW_AT_location[DW_OP_breg8 8]
         SBBO      &r15, r2, 4, 4        ; [] |35| data
         SBBO      &r14, r2, 0, 4        ; [] |35| rbuf
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 36,column 16,is_stmt,isa 0
@@ -992,44 +1008,44 @@ $C$DW$60	.dwtag  DW_TAG_variable, DW_AT_name("p")
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 44,column 1,is_stmt,isa 0
         ADD       r2, r2, 0x0a          ; [] 
 	.dwcfi	cfa_offset, 0
-$C$DW$61	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$61, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$61, DW_AT_TI_return
+$C$DW$62	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$62, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$62, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$55, DW_AT_TI_end_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$55, DW_AT_TI_end_line(0x2c)
-	.dwattr $C$DW$55, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$56, DW_AT_TI_end_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$56, DW_AT_TI_end_line(0x2c)
+	.dwattr $C$DW$56, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$55
+	.dwendtag $C$DW$56
 
 	.sect	".text:rbuf_write_uint64"
 	.clink
 	.global	||rbuf_write_uint64||
 
-$C$DW$62	.dwtag  DW_TAG_subprogram, DW_AT_name("rbuf_write_uint64")
-	.dwattr $C$DW$62, DW_AT_low_pc(||rbuf_write_uint64||)
-	.dwattr $C$DW$62, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$62, DW_AT_TI_symbol_name("rbuf_write_uint64")
-	.dwattr $C$DW$62, DW_AT_external
-	.dwattr $C$DW$62, DW_AT_type(*$C$DW$T$8)
-	.dwattr $C$DW$62, DW_AT_TI_begin_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$62, DW_AT_TI_begin_line(0x2f)
-	.dwattr $C$DW$62, DW_AT_TI_begin_column(0x01)
-	.dwattr $C$DW$62, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$62, DW_AT_decl_line(0x2f)
-	.dwattr $C$DW$62, DW_AT_decl_column(0x01)
-	.dwattr $C$DW$62, DW_AT_TI_max_frame_size(0x16)
+$C$DW$63	.dwtag  DW_TAG_subprogram, DW_AT_name("rbuf_write_uint64")
+	.dwattr $C$DW$63, DW_AT_low_pc(||rbuf_write_uint64||)
+	.dwattr $C$DW$63, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$63, DW_AT_TI_symbol_name("rbuf_write_uint64")
+	.dwattr $C$DW$63, DW_AT_external
+	.dwattr $C$DW$63, DW_AT_type(*$C$DW$T$8)
+	.dwattr $C$DW$63, DW_AT_TI_begin_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$63, DW_AT_TI_begin_line(0x2f)
+	.dwattr $C$DW$63, DW_AT_TI_begin_column(0x01)
+	.dwattr $C$DW$63, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$63, DW_AT_decl_line(0x2f)
+	.dwattr $C$DW$63, DW_AT_decl_column(0x01)
+	.dwattr $C$DW$63, DW_AT_TI_max_frame_size(0x16)
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 48,column 1,is_stmt,address ||rbuf_write_uint64||,isa 0
 
 	.dwfde $C$DW$CIE, ||rbuf_write_uint64||
-$C$DW$63	.dwtag  DW_TAG_formal_parameter, DW_AT_name("rbuf")
-	.dwattr $C$DW$63, DW_AT_TI_symbol_name("rbuf")
-	.dwattr $C$DW$63, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$63, DW_AT_location[DW_OP_regx 0x38]
-$C$DW$64	.dwtag  DW_TAG_formal_parameter, DW_AT_name("data")
-	.dwattr $C$DW$64, DW_AT_TI_symbol_name("data")
-	.dwattr $C$DW$64, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$64, DW_AT_location[DW_OP_regx 0x3c]
+$C$DW$64	.dwtag  DW_TAG_formal_parameter, DW_AT_name("rbuf")
+	.dwattr $C$DW$64, DW_AT_TI_symbol_name("rbuf")
+	.dwattr $C$DW$64, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$64, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$65	.dwtag  DW_TAG_formal_parameter, DW_AT_name("data")
+	.dwattr $C$DW$65, DW_AT_TI_symbol_name("data")
+	.dwattr $C$DW$65, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$65, DW_AT_location[DW_OP_regx 0x3c]
 ;----------------------------------------------------------------------
 ;  47 | rbuf_write_uint64(struct rbuffer *rbuf, uint64_t data)                 
 ;----------------------------------------------------------------------
@@ -1048,26 +1064,26 @@ $C$DW$64	.dwtag  DW_TAG_formal_parameter, DW_AT_name("data")
 	.dwcfi	cfa_offset, 0
         SUB       r2, r2, 0x16          ; [] 
 	.dwcfi	cfa_offset, 22
-$C$DW$65	.dwtag  DW_TAG_variable, DW_AT_name("rbuf")
-	.dwattr $C$DW$65, DW_AT_TI_symbol_name("rbuf")
-	.dwattr $C$DW$65, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$65, DW_AT_location[DW_OP_breg8 0]
-$C$DW$66	.dwtag  DW_TAG_variable, DW_AT_name("data")
-	.dwattr $C$DW$66, DW_AT_TI_symbol_name("data")
-	.dwattr $C$DW$66, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$66, DW_AT_location[DW_OP_breg8 4]
-$C$DW$67	.dwtag  DW_TAG_variable, DW_AT_name("lower")
-	.dwattr $C$DW$67, DW_AT_TI_symbol_name("lower")
-	.dwattr $C$DW$67, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$67, DW_AT_location[DW_OP_breg8 12]
-$C$DW$68	.dwtag  DW_TAG_variable, DW_AT_name("upper")
-	.dwattr $C$DW$68, DW_AT_TI_symbol_name("upper")
+$C$DW$66	.dwtag  DW_TAG_variable, DW_AT_name("rbuf")
+	.dwattr $C$DW$66, DW_AT_TI_symbol_name("rbuf")
+	.dwattr $C$DW$66, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$66, DW_AT_location[DW_OP_breg8 0]
+$C$DW$67	.dwtag  DW_TAG_variable, DW_AT_name("data")
+	.dwattr $C$DW$67, DW_AT_TI_symbol_name("data")
+	.dwattr $C$DW$67, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$67, DW_AT_location[DW_OP_breg8 4]
+$C$DW$68	.dwtag  DW_TAG_variable, DW_AT_name("lower")
+	.dwattr $C$DW$68, DW_AT_TI_symbol_name("lower")
 	.dwattr $C$DW$68, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$68, DW_AT_location[DW_OP_breg8 16]
-$C$DW$69	.dwtag  DW_TAG_variable, DW_AT_name("p")
-	.dwattr $C$DW$69, DW_AT_TI_symbol_name("p")
-	.dwattr $C$DW$69, DW_AT_type(*$C$DW$T$23)
-	.dwattr $C$DW$69, DW_AT_location[DW_OP_breg8 20]
+	.dwattr $C$DW$68, DW_AT_location[DW_OP_breg8 12]
+$C$DW$69	.dwtag  DW_TAG_variable, DW_AT_name("upper")
+	.dwattr $C$DW$69, DW_AT_TI_symbol_name("upper")
+	.dwattr $C$DW$69, DW_AT_type(*$C$DW$T$20)
+	.dwattr $C$DW$69, DW_AT_location[DW_OP_breg8 16]
+$C$DW$70	.dwtag  DW_TAG_variable, DW_AT_name("p")
+	.dwattr $C$DW$70, DW_AT_TI_symbol_name("p")
+	.dwattr $C$DW$70, DW_AT_type(*$C$DW$T$23)
+	.dwattr $C$DW$70, DW_AT_location[DW_OP_breg8 20]
         SBBO      &r15, r2, 4, 8        ; [] |48| data
         SBBO      &r14, r2, 0, 4        ; [] |48| rbuf
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 49,column 20,is_stmt,isa 0
@@ -1196,44 +1212,44 @@ $C$DW$69	.dwtag  DW_TAG_variable, DW_AT_name("p")
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 60,column 1,is_stmt,isa 0
         ADD       r2, r2, 0x16          ; [] 
 	.dwcfi	cfa_offset, 0
-$C$DW$70	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$70, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$70, DW_AT_TI_return
+$C$DW$71	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$71, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$71, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$62, DW_AT_TI_end_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$62, DW_AT_TI_end_line(0x3c)
-	.dwattr $C$DW$62, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$63, DW_AT_TI_end_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$63, DW_AT_TI_end_line(0x3c)
+	.dwattr $C$DW$63, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$62
+	.dwendtag $C$DW$63
 
 	.sect	".text:rbuf_read_uint32"
 	.clink
 	.global	||rbuf_read_uint32||
 
-$C$DW$71	.dwtag  DW_TAG_subprogram, DW_AT_name("rbuf_read_uint32")
-	.dwattr $C$DW$71, DW_AT_low_pc(||rbuf_read_uint32||)
-	.dwattr $C$DW$71, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$71, DW_AT_TI_symbol_name("rbuf_read_uint32")
-	.dwattr $C$DW$71, DW_AT_external
-	.dwattr $C$DW$71, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$71, DW_AT_TI_begin_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$71, DW_AT_TI_begin_line(0x3f)
-	.dwattr $C$DW$71, DW_AT_TI_begin_column(0x01)
-	.dwattr $C$DW$71, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$71, DW_AT_decl_line(0x3f)
-	.dwattr $C$DW$71, DW_AT_decl_column(0x01)
-	.dwattr $C$DW$71, DW_AT_TI_max_frame_size(0x0e)
+$C$DW$72	.dwtag  DW_TAG_subprogram, DW_AT_name("rbuf_read_uint32")
+	.dwattr $C$DW$72, DW_AT_low_pc(||rbuf_read_uint32||)
+	.dwattr $C$DW$72, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$72, DW_AT_TI_symbol_name("rbuf_read_uint32")
+	.dwattr $C$DW$72, DW_AT_external
+	.dwattr $C$DW$72, DW_AT_type(*$C$DW$T$20)
+	.dwattr $C$DW$72, DW_AT_TI_begin_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$72, DW_AT_TI_begin_line(0x3f)
+	.dwattr $C$DW$72, DW_AT_TI_begin_column(0x01)
+	.dwattr $C$DW$72, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$72, DW_AT_decl_line(0x3f)
+	.dwattr $C$DW$72, DW_AT_decl_column(0x01)
+	.dwattr $C$DW$72, DW_AT_TI_max_frame_size(0x0e)
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 64,column 1,is_stmt,address ||rbuf_read_uint32||,isa 0
 
 	.dwfde $C$DW$CIE, ||rbuf_read_uint32||
-$C$DW$72	.dwtag  DW_TAG_formal_parameter, DW_AT_name("rbuf")
-	.dwattr $C$DW$72, DW_AT_TI_symbol_name("rbuf")
-	.dwattr $C$DW$72, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$72, DW_AT_location[DW_OP_regx 0x38]
-$C$DW$73	.dwtag  DW_TAG_formal_parameter, DW_AT_name("status")
-	.dwattr $C$DW$73, DW_AT_TI_symbol_name("status")
-	.dwattr $C$DW$73, DW_AT_type(*$C$DW$T$44)
-	.dwattr $C$DW$73, DW_AT_location[DW_OP_regx 0x3c]
+$C$DW$73	.dwtag  DW_TAG_formal_parameter, DW_AT_name("rbuf")
+	.dwattr $C$DW$73, DW_AT_TI_symbol_name("rbuf")
+	.dwattr $C$DW$73, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$73, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$74	.dwtag  DW_TAG_formal_parameter, DW_AT_name("status")
+	.dwattr $C$DW$74, DW_AT_TI_symbol_name("status")
+	.dwattr $C$DW$74, DW_AT_type(*$C$DW$T$44)
+	.dwattr $C$DW$74, DW_AT_location[DW_OP_regx 0x3c]
 ;----------------------------------------------------------------------
 ;  63 | rbuf_read_uint32(struct rbuffer *rbuf, short *status)                  
 ;----------------------------------------------------------------------
@@ -1252,18 +1268,18 @@ $C$DW$73	.dwtag  DW_TAG_formal_parameter, DW_AT_name("status")
 	.dwcfi	cfa_offset, 0
         SUB       r2, r2, 0x0e          ; [] 
 	.dwcfi	cfa_offset, 14
-$C$DW$74	.dwtag  DW_TAG_variable, DW_AT_name("rbuf")
-	.dwattr $C$DW$74, DW_AT_TI_symbol_name("rbuf")
-	.dwattr $C$DW$74, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$74, DW_AT_location[DW_OP_breg8 0]
-$C$DW$75	.dwtag  DW_TAG_variable, DW_AT_name("status")
-	.dwattr $C$DW$75, DW_AT_TI_symbol_name("status")
-	.dwattr $C$DW$75, DW_AT_type(*$C$DW$T$44)
-	.dwattr $C$DW$75, DW_AT_location[DW_OP_breg8 4]
-$C$DW$76	.dwtag  DW_TAG_variable, DW_AT_name("c")
-	.dwattr $C$DW$76, DW_AT_TI_symbol_name("c")
-	.dwattr $C$DW$76, DW_AT_type(*$C$DW$T$23)
-	.dwattr $C$DW$76, DW_AT_location[DW_OP_breg8 8]
+$C$DW$75	.dwtag  DW_TAG_variable, DW_AT_name("rbuf")
+	.dwattr $C$DW$75, DW_AT_TI_symbol_name("rbuf")
+	.dwattr $C$DW$75, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$75, DW_AT_location[DW_OP_breg8 0]
+$C$DW$76	.dwtag  DW_TAG_variable, DW_AT_name("status")
+	.dwattr $C$DW$76, DW_AT_TI_symbol_name("status")
+	.dwattr $C$DW$76, DW_AT_type(*$C$DW$T$44)
+	.dwattr $C$DW$76, DW_AT_location[DW_OP_breg8 4]
+$C$DW$77	.dwtag  DW_TAG_variable, DW_AT_name("c")
+	.dwattr $C$DW$77, DW_AT_TI_symbol_name("c")
+	.dwattr $C$DW$77, DW_AT_type(*$C$DW$T$23)
+	.dwattr $C$DW$77, DW_AT_location[DW_OP_breg8 8]
         SBBO      &r15, r2, 4, 4        ; [] |64| status
         SBBO      &r14, r2, 0, 4        ; [] |64| rbuf
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 65,column 16,is_stmt,isa 0
@@ -1298,11 +1314,11 @@ $C$DW$76	.dwtag  DW_TAG_variable, DW_AT_name("c")
         QBEQ      ||$C$L13||, r0.w0, r0.w2 ; [] |66| 
 ;* --------------------------------------------------------------------------*
 
-$C$DW$77	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
-$C$DW$78	.dwtag  DW_TAG_variable, DW_AT_name("data")
-	.dwattr $C$DW$78, DW_AT_TI_symbol_name("data")
-	.dwattr $C$DW$78, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$78, DW_AT_location[DW_OP_breg8 10]
+$C$DW$78	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
+$C$DW$79	.dwtag  DW_TAG_variable, DW_AT_name("data")
+	.dwattr $C$DW$79, DW_AT_TI_symbol_name("data")
+	.dwattr $C$DW$79, DW_AT_type(*$C$DW$T$20)
+	.dwattr $C$DW$79, DW_AT_location[DW_OP_breg8 10]
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 67,column 23,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ;  67 | uint32_t data = rbuf->buffer[c];                                       
@@ -1340,7 +1356,7 @@ $C$DW$78	.dwtag  DW_TAG_variable, DW_AT_name("data")
         LBBO      &r14, r2, 10, 4       ; [] |70| data
         JMP       ||$C$L15||            ; [] |70| 
 ;* --------------------------------------------------------------------------*
-	.dwendtag $C$DW$77
+	.dwendtag $C$DW$78
 
 ;* --------------------------------------------------------------------------*
 ||$C$L13||:    
@@ -1366,44 +1382,44 @@ $C$DW$78	.dwtag  DW_TAG_variable, DW_AT_name("data")
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 75,column 1,is_stmt,isa 0
         ADD       r2, r2, 0x0e          ; [] 
 	.dwcfi	cfa_offset, 0
-$C$DW$79	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$79, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$79, DW_AT_TI_return
+$C$DW$80	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$80, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$80, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$71, DW_AT_TI_end_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$71, DW_AT_TI_end_line(0x4b)
-	.dwattr $C$DW$71, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$72, DW_AT_TI_end_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$72, DW_AT_TI_end_line(0x4b)
+	.dwattr $C$DW$72, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$71
+	.dwendtag $C$DW$72
 
 	.sect	".text:rbuf_read_uint64"
 	.clink
 	.global	||rbuf_read_uint64||
 
-$C$DW$80	.dwtag  DW_TAG_subprogram, DW_AT_name("rbuf_read_uint64")
-	.dwattr $C$DW$80, DW_AT_low_pc(||rbuf_read_uint64||)
-	.dwattr $C$DW$80, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$80, DW_AT_TI_symbol_name("rbuf_read_uint64")
-	.dwattr $C$DW$80, DW_AT_external
-	.dwattr $C$DW$80, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$80, DW_AT_TI_begin_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$80, DW_AT_TI_begin_line(0x4e)
-	.dwattr $C$DW$80, DW_AT_TI_begin_column(0x01)
-	.dwattr $C$DW$80, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$80, DW_AT_decl_line(0x4e)
-	.dwattr $C$DW$80, DW_AT_decl_column(0x01)
-	.dwattr $C$DW$80, DW_AT_TI_max_frame_size(0x1a)
+$C$DW$81	.dwtag  DW_TAG_subprogram, DW_AT_name("rbuf_read_uint64")
+	.dwattr $C$DW$81, DW_AT_low_pc(||rbuf_read_uint64||)
+	.dwattr $C$DW$81, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$81, DW_AT_TI_symbol_name("rbuf_read_uint64")
+	.dwattr $C$DW$81, DW_AT_external
+	.dwattr $C$DW$81, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$81, DW_AT_TI_begin_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$81, DW_AT_TI_begin_line(0x4e)
+	.dwattr $C$DW$81, DW_AT_TI_begin_column(0x01)
+	.dwattr $C$DW$81, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$81, DW_AT_decl_line(0x4e)
+	.dwattr $C$DW$81, DW_AT_decl_column(0x01)
+	.dwattr $C$DW$81, DW_AT_TI_max_frame_size(0x1a)
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 79,column 1,is_stmt,address ||rbuf_read_uint64||,isa 0
 
 	.dwfde $C$DW$CIE, ||rbuf_read_uint64||
-$C$DW$81	.dwtag  DW_TAG_formal_parameter, DW_AT_name("rbuf")
-	.dwattr $C$DW$81, DW_AT_TI_symbol_name("rbuf")
-	.dwattr $C$DW$81, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$81, DW_AT_location[DW_OP_regx 0x38]
-$C$DW$82	.dwtag  DW_TAG_formal_parameter, DW_AT_name("status")
-	.dwattr $C$DW$82, DW_AT_TI_symbol_name("status")
-	.dwattr $C$DW$82, DW_AT_type(*$C$DW$T$44)
-	.dwattr $C$DW$82, DW_AT_location[DW_OP_regx 0x3c]
+$C$DW$82	.dwtag  DW_TAG_formal_parameter, DW_AT_name("rbuf")
+	.dwattr $C$DW$82, DW_AT_TI_symbol_name("rbuf")
+	.dwattr $C$DW$82, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$82, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$83	.dwtag  DW_TAG_formal_parameter, DW_AT_name("status")
+	.dwattr $C$DW$83, DW_AT_TI_symbol_name("status")
+	.dwattr $C$DW$83, DW_AT_type(*$C$DW$T$44)
+	.dwattr $C$DW$83, DW_AT_location[DW_OP_regx 0x3c]
 ;----------------------------------------------------------------------
 ;  78 | rbuf_read_uint64(struct rbuffer *rbuf, short *status)                  
 ;----------------------------------------------------------------------
@@ -1422,22 +1438,22 @@ $C$DW$82	.dwtag  DW_TAG_formal_parameter, DW_AT_name("status")
 	.dwcfi	cfa_offset, 0
         SUB       r2, r2, 0x1a          ; [] 
 	.dwcfi	cfa_offset, 26
-$C$DW$83	.dwtag  DW_TAG_variable, DW_AT_name("rbuf")
-	.dwattr $C$DW$83, DW_AT_TI_symbol_name("rbuf")
-	.dwattr $C$DW$83, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$83, DW_AT_location[DW_OP_breg8 0]
-$C$DW$84	.dwtag  DW_TAG_variable, DW_AT_name("status")
-	.dwattr $C$DW$84, DW_AT_TI_symbol_name("status")
-	.dwattr $C$DW$84, DW_AT_type(*$C$DW$T$44)
-	.dwattr $C$DW$84, DW_AT_location[DW_OP_breg8 4]
-$C$DW$85	.dwtag  DW_TAG_variable, DW_AT_name("data")
-	.dwattr $C$DW$85, DW_AT_TI_symbol_name("data")
-	.dwattr $C$DW$85, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$85, DW_AT_location[DW_OP_breg8 8]
-$C$DW$86	.dwtag  DW_TAG_variable, DW_AT_name("c")
-	.dwattr $C$DW$86, DW_AT_TI_symbol_name("c")
-	.dwattr $C$DW$86, DW_AT_type(*$C$DW$T$23)
-	.dwattr $C$DW$86, DW_AT_location[DW_OP_breg8 16]
+$C$DW$84	.dwtag  DW_TAG_variable, DW_AT_name("rbuf")
+	.dwattr $C$DW$84, DW_AT_TI_symbol_name("rbuf")
+	.dwattr $C$DW$84, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$84, DW_AT_location[DW_OP_breg8 0]
+$C$DW$85	.dwtag  DW_TAG_variable, DW_AT_name("status")
+	.dwattr $C$DW$85, DW_AT_TI_symbol_name("status")
+	.dwattr $C$DW$85, DW_AT_type(*$C$DW$T$44)
+	.dwattr $C$DW$85, DW_AT_location[DW_OP_breg8 4]
+$C$DW$86	.dwtag  DW_TAG_variable, DW_AT_name("data")
+	.dwattr $C$DW$86, DW_AT_TI_symbol_name("data")
+	.dwattr $C$DW$86, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$86, DW_AT_location[DW_OP_breg8 8]
+$C$DW$87	.dwtag  DW_TAG_variable, DW_AT_name("c")
+	.dwattr $C$DW$87, DW_AT_TI_symbol_name("c")
+	.dwattr $C$DW$87, DW_AT_type(*$C$DW$T$23)
+	.dwattr $C$DW$87, DW_AT_location[DW_OP_breg8 16]
         SBBO      &r15, r2, 4, 4        ; [] |79| status
         SBBO      &r14, r2, 0, 4        ; [] |79| rbuf
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 80,column 19,is_stmt,isa 0
@@ -1499,15 +1515,15 @@ $C$DW$86	.dwtag  DW_TAG_variable, DW_AT_name("c")
         QBEQ      ||$C$L21||, r0, r1    ; [] |82| 
 ;* --------------------------------------------------------------------------*
 
-$C$DW$87	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
-$C$DW$88	.dwtag  DW_TAG_variable, DW_AT_name("lower")
-	.dwattr $C$DW$88, DW_AT_TI_symbol_name("lower")
-	.dwattr $C$DW$88, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$88, DW_AT_location[DW_OP_breg8 18]
-$C$DW$89	.dwtag  DW_TAG_variable, DW_AT_name("upper")
-	.dwattr $C$DW$89, DW_AT_TI_symbol_name("upper")
+$C$DW$88	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
+$C$DW$89	.dwtag  DW_TAG_variable, DW_AT_name("lower")
+	.dwattr $C$DW$89, DW_AT_TI_symbol_name("lower")
 	.dwattr $C$DW$89, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$89, DW_AT_location[DW_OP_breg8 22]
+	.dwattr $C$DW$89, DW_AT_location[DW_OP_breg8 18]
+$C$DW$90	.dwtag  DW_TAG_variable, DW_AT_name("upper")
+	.dwattr $C$DW$90, DW_AT_TI_symbol_name("upper")
+	.dwattr $C$DW$90, DW_AT_type(*$C$DW$T$20)
+	.dwattr $C$DW$90, DW_AT_location[DW_OP_breg8 22]
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 83,column 24,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ;  83 | uint32_t lower = rbuf->buffer[c];                                      
@@ -1606,7 +1622,7 @@ $C$DW$89	.dwtag  DW_TAG_variable, DW_AT_name("upper")
         LBBO      &r14, r2, 8, 8        ; [] |90| data
         JMP       ||$C$L23||            ; [] |90| 
 ;* --------------------------------------------------------------------------*
-	.dwendtag $C$DW$87
+	.dwendtag $C$DW$88
 
 ;* --------------------------------------------------------------------------*
 ||$C$L21||:    
@@ -1632,37 +1648,37 @@ $C$DW$89	.dwtag  DW_TAG_variable, DW_AT_name("upper")
 	.dwpsn	file "../../include/nesl_pru_rbuffer.h",line 95,column 1,is_stmt,isa 0
         ADD       r2, r2, 0x1a          ; [] 
 	.dwcfi	cfa_offset, 0
-$C$DW$90	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$90, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$90, DW_AT_TI_return
+$C$DW$91	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$91, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$91, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$80, DW_AT_TI_end_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$80, DW_AT_TI_end_line(0x5f)
-	.dwattr $C$DW$80, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$81, DW_AT_TI_end_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$81, DW_AT_TI_end_line(0x5f)
+	.dwattr $C$DW$81, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$80
+	.dwendtag $C$DW$81
 
 	.sect	".text:terminate"
 	.clink
 	.global	||terminate||
 
-$C$DW$91	.dwtag  DW_TAG_subprogram, DW_AT_name("terminate")
-	.dwattr $C$DW$91, DW_AT_low_pc(||terminate||)
-	.dwattr $C$DW$91, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$91, DW_AT_TI_symbol_name("terminate")
-	.dwattr $C$DW$91, DW_AT_external
-	.dwattr $C$DW$91, DW_AT_TI_begin_file("pru_main.c")
-	.dwattr $C$DW$91, DW_AT_TI_begin_line(0x1f)
-	.dwattr $C$DW$91, DW_AT_TI_begin_column(0x01)
-	.dwattr $C$DW$91, DW_AT_decl_file("pru_main.c")
-	.dwattr $C$DW$91, DW_AT_decl_line(0x1f)
-	.dwattr $C$DW$91, DW_AT_decl_column(0x01)
-	.dwattr $C$DW$91, DW_AT_TI_max_frame_size(0x02)
-	.dwpsn	file "pru_main.c",line 32,column 1,is_stmt,address ||terminate||,isa 0
+$C$DW$92	.dwtag  DW_TAG_subprogram, DW_AT_name("terminate")
+	.dwattr $C$DW$92, DW_AT_low_pc(||terminate||)
+	.dwattr $C$DW$92, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$92, DW_AT_TI_symbol_name("terminate")
+	.dwattr $C$DW$92, DW_AT_external
+	.dwattr $C$DW$92, DW_AT_TI_begin_file("pru_main.c")
+	.dwattr $C$DW$92, DW_AT_TI_begin_line(0x20)
+	.dwattr $C$DW$92, DW_AT_TI_begin_column(0x01)
+	.dwattr $C$DW$92, DW_AT_decl_file("pru_main.c")
+	.dwattr $C$DW$92, DW_AT_decl_line(0x20)
+	.dwattr $C$DW$92, DW_AT_decl_column(0x01)
+	.dwattr $C$DW$92, DW_AT_TI_max_frame_size(0x02)
+	.dwpsn	file "pru_main.c",line 33,column 1,is_stmt,address ||terminate||,isa 0
 
 	.dwfde $C$DW$CIE, ||terminate||
 ;----------------------------------------------------------------------
-;  31 | terminate()                                                            
+;  32 | terminate()                                                            
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -1682,65 +1698,65 @@ $C$DW$91	.dwtag  DW_TAG_subprogram, DW_AT_name("terminate")
         SBBO      &r3.b2, r2, 0, 2      ; [] 
 	.dwcfi	save_reg_to_mem, 14, -2
 	.dwcfi	save_reg_to_mem, 15, -1
-	.dwpsn	file "pru_main.c",line 33,column 2,is_stmt,isa 0
+	.dwpsn	file "pru_main.c",line 34,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  33 | deassert_pin(P8_46);                                                   
+;  34 | deassert_pin(P8_46);                                                   
 ;----------------------------------------------------------------------
-        LDI       r14, 0x0002           ; [] |33| 
-$C$DW$92	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$92, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$92, DW_AT_name("deassert_pin")
-	.dwattr $C$DW$92, DW_AT_TI_call
-        JAL       r3.w2, ||deassert_pin|| ; [] |33| deassert_pin
-	.dwpsn	file "pru_main.c",line 34,column 5,is_stmt,isa 0
-;----------------------------------------------------------------------
-;  34 | TRIG_INTC(4); // Trigger interrupt PRUEVENT_1                          
-;----------------------------------------------------------------------
-        LDI       r31, 0x0024           ; [] |34| 
+        LDI       r14, 0x0002           ; [] |34| 
+$C$DW$93	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$93, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$93, DW_AT_name("deassert_pin")
+	.dwattr $C$DW$93, DW_AT_TI_call
+        JAL       r3.w2, ||deassert_pin|| ; [] |34| deassert_pin
 	.dwpsn	file "pru_main.c",line 35,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  35 | __halt(); // halt the PRU                                              
+;  35 | TRIG_INTC(4); // Trigger interrupt PRUEVENT_1                          
 ;----------------------------------------------------------------------
-        HALT      ; [] |35| 
-	.dwpsn	file "pru_main.c",line 36,column 1,is_stmt,isa 0
+        LDI       r31, 0x0024           ; [] |35| 
+	.dwpsn	file "pru_main.c",line 36,column 5,is_stmt,isa 0
+;----------------------------------------------------------------------
+;  36 | __halt(); // halt the PRU                                              
+;----------------------------------------------------------------------
+        HALT      ; [] |36| 
+	.dwpsn	file "pru_main.c",line 37,column 1,is_stmt,isa 0
         LBBO      &r3.b2, r2, 0, 2      ; [] 
 	.dwcfi	restore_reg, 14
 	.dwcfi	restore_reg, 15
         ADD       r2, r2, 0x02          ; [] 
 	.dwcfi	cfa_offset, 0
-$C$DW$93	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$93, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$93, DW_AT_TI_return
+$C$DW$94	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$94, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$94, DW_AT_TI_return
         JMP       r3.w2                 ; [] 
-	.dwattr $C$DW$91, DW_AT_TI_end_file("pru_main.c")
-	.dwattr $C$DW$91, DW_AT_TI_end_line(0x24)
-	.dwattr $C$DW$91, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$92, DW_AT_TI_end_file("pru_main.c")
+	.dwattr $C$DW$92, DW_AT_TI_end_line(0x25)
+	.dwattr $C$DW$92, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$91
+	.dwendtag $C$DW$92
 
 	.sect	".text:main"
 	.clink
 	.global	||main||
 
-$C$DW$94	.dwtag  DW_TAG_subprogram, DW_AT_name("main")
-	.dwattr $C$DW$94, DW_AT_low_pc(||main||)
-	.dwattr $C$DW$94, DW_AT_high_pc(0x00)
-	.dwattr $C$DW$94, DW_AT_TI_symbol_name("main")
-	.dwattr $C$DW$94, DW_AT_external
-	.dwattr $C$DW$94, DW_AT_type(*$C$DW$T$10)
-	.dwattr $C$DW$94, DW_AT_TI_begin_file("pru_main.c")
-	.dwattr $C$DW$94, DW_AT_TI_begin_line(0x26)
-	.dwattr $C$DW$94, DW_AT_TI_begin_column(0x05)
-	.dwattr $C$DW$94, DW_AT_decl_file("pru_main.c")
-	.dwattr $C$DW$94, DW_AT_decl_line(0x26)
-	.dwattr $C$DW$94, DW_AT_decl_column(0x05)
-	.dwattr $C$DW$94, DW_AT_TI_max_frame_size(0x28)
-	.dwpsn	file "pru_main.c",line 39,column 1,is_stmt,address ||main||,isa 0
+$C$DW$95	.dwtag  DW_TAG_subprogram, DW_AT_name("main")
+	.dwattr $C$DW$95, DW_AT_low_pc(||main||)
+	.dwattr $C$DW$95, DW_AT_high_pc(0x00)
+	.dwattr $C$DW$95, DW_AT_TI_symbol_name("main")
+	.dwattr $C$DW$95, DW_AT_external
+	.dwattr $C$DW$95, DW_AT_type(*$C$DW$T$10)
+	.dwattr $C$DW$95, DW_AT_TI_begin_file("pru_main.c")
+	.dwattr $C$DW$95, DW_AT_TI_begin_line(0x27)
+	.dwattr $C$DW$95, DW_AT_TI_begin_column(0x05)
+	.dwattr $C$DW$95, DW_AT_decl_file("pru_main.c")
+	.dwattr $C$DW$95, DW_AT_decl_line(0x27)
+	.dwattr $C$DW$95, DW_AT_decl_column(0x05)
+	.dwattr $C$DW$95, DW_AT_TI_max_frame_size(0x28)
+	.dwpsn	file "pru_main.c",line 40,column 1,is_stmt,address ||main||,isa 0
 
 	.dwfde $C$DW$CIE, ||main||
 ;----------------------------------------------------------------------
-;  38 | int main()                                                             
-;  41 | // Wait enough time for host to startup                                
+;  39 | int main()                                                             
+;  42 | // Wait enough time for host to startup                                
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -1760,244 +1776,243 @@ $C$DW$94	.dwtag  DW_TAG_subprogram, DW_AT_name("main")
         SBBO      &r3.b2, r2, 38, 2     ; [] 
 	.dwcfi	save_reg_to_mem, 14, -2
 	.dwcfi	save_reg_to_mem, 15, -1
-$C$DW$95	.dwtag  DW_TAG_variable, DW_AT_name("rec_buf")
-	.dwattr $C$DW$95, DW_AT_TI_symbol_name("rec_buf")
-	.dwattr $C$DW$95, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$95, DW_AT_location[DW_OP_breg8 0]
-$C$DW$96	.dwtag  DW_TAG_variable, DW_AT_name("terminate_buf")
-	.dwattr $C$DW$96, DW_AT_TI_symbol_name("terminate_buf")
+$C$DW$96	.dwtag  DW_TAG_variable, DW_AT_name("rec_buf")
+	.dwattr $C$DW$96, DW_AT_TI_symbol_name("rec_buf")
 	.dwattr $C$DW$96, DW_AT_type(*$C$DW$T$37)
-	.dwattr $C$DW$96, DW_AT_location[DW_OP_breg8 4]
-$C$DW$97	.dwtag  DW_TAG_variable, DW_AT_name("time")
-	.dwattr $C$DW$97, DW_AT_TI_symbol_name("time")
-	.dwattr $C$DW$97, DW_AT_type(*$C$DW$T$22)
-	.dwattr $C$DW$97, DW_AT_location[DW_OP_breg8 8]
-$C$DW$98	.dwtag  DW_TAG_variable, DW_AT_name("waitTime")
-	.dwattr $C$DW$98, DW_AT_TI_symbol_name("waitTime")
-	.dwattr $C$DW$98, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$98, DW_AT_location[DW_OP_breg8 28]
-$C$DW$99	.dwtag  DW_TAG_variable, DW_AT_name("status")
-	.dwattr $C$DW$99, DW_AT_TI_symbol_name("status")
-	.dwattr $C$DW$99, DW_AT_type(*$C$DW$T$8)
-	.dwattr $C$DW$99, DW_AT_location[DW_OP_breg8 32]
-	.dwpsn	file "pru_main.c",line 42,column 5,is_stmt,isa 0
+	.dwattr $C$DW$96, DW_AT_location[DW_OP_breg8 0]
+$C$DW$97	.dwtag  DW_TAG_variable, DW_AT_name("terminate_buf")
+	.dwattr $C$DW$97, DW_AT_TI_symbol_name("terminate_buf")
+	.dwattr $C$DW$97, DW_AT_type(*$C$DW$T$37)
+	.dwattr $C$DW$97, DW_AT_location[DW_OP_breg8 4]
+$C$DW$98	.dwtag  DW_TAG_variable, DW_AT_name("time")
+	.dwattr $C$DW$98, DW_AT_TI_symbol_name("time")
+	.dwattr $C$DW$98, DW_AT_type(*$C$DW$T$22)
+	.dwattr $C$DW$98, DW_AT_location[DW_OP_breg8 8]
+$C$DW$99	.dwtag  DW_TAG_variable, DW_AT_name("waitTime")
+	.dwattr $C$DW$99, DW_AT_TI_symbol_name("waitTime")
+	.dwattr $C$DW$99, DW_AT_type(*$C$DW$T$20)
+	.dwattr $C$DW$99, DW_AT_location[DW_OP_breg8 28]
+$C$DW$100	.dwtag  DW_TAG_variable, DW_AT_name("status")
+	.dwattr $C$DW$100, DW_AT_TI_symbol_name("status")
+	.dwattr $C$DW$100, DW_AT_type(*$C$DW$T$8)
+	.dwattr $C$DW$100, DW_AT_location[DW_OP_breg8 32]
+	.dwpsn	file "pru_main.c",line 43,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  42 | WAIT_MS(1000);                                                         
-;  50 |     //      Receive timestamp from host to PRU                         
+;  43 | WAIT_MS(1000);                                                         
+;  45 |     //      Receive timestamp from host to PRU                         
 ;----------------------------------------------------------------------
 
-$C$DW$100	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
-$C$DW$101	.dwtag  DW_TAG_variable, DW_AT_name("_ms")
-	.dwattr $C$DW$101, DW_AT_TI_symbol_name("_ms")
-	.dwattr $C$DW$101, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$101, DW_AT_location[DW_OP_breg8 34]
-        LDI       r0, 0x03e7            ; [] |42| 
-        SBBO      &r0, r2, 34, 4        ; [] |42| _ms
-        SUB       r1, r0, 0x01          ; [] |42| 
-        SBBO      &r1, r2, 34, 4        ; [] |42| _ms
-        QBEQ      ||$C$L25||, r0, 0x00  ; [] |42| 
+$C$DW$101	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
+$C$DW$102	.dwtag  DW_TAG_variable, DW_AT_name("_ms")
+	.dwattr $C$DW$102, DW_AT_TI_symbol_name("_ms")
+	.dwattr $C$DW$102, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$102, DW_AT_location[DW_OP_breg8 34]
+        LDI       r0, 0x03e7            ; [] |43| 
+        SBBO      &r0, r2, 34, 4        ; [] |43| _ms
+        SUB       r1, r0, 0x01          ; [] |43| 
+        SBBO      &r1, r2, 34, 4        ; [] |43| _ms
+        QBEQ      ||$C$L25||, r0, 0x00  ; [] |43| 
 ;* --------------------------------------------------------------------------*
 ;*   BEGIN LOOP ||$C$L24||
 ;*
-;*   Loop source line                : 42
-;*   Loop closing brace source line  : 42
+;*   Loop source line                : 43
+;*   Loop closing brace source line  : 43
 ;*   Known Minimum Trip Count        : 1
 ;*   Known Maximum Trip Count        : 4294967295
 ;*   Known Max Trip Count Factor     : 1
 ;* --------------------------------------------------------------------------*
 ||$C$L24||:    
-        NOP       ; [] |42| 
+        NOP       ; [] |43| 
         .newblock
         LDI32    r0, 99995
 $1:     SUB      r0, r0, 1
-        QBNE     $1, r0, 0             ; [] |42| 
-        LBBO      &r0, r2, 34, 4        ; [] |42| _ms
-        SUB       r1, r0, 0x01          ; [] |42| 
-        SBBO      &r1, r2, 34, 4        ; [] |42| _ms
-        QBNE      ||$C$L24||, r0, 0x00  ; [] |42| 
+        QBNE     $1, r0, 0             ; [] |43| 
+        LBBO      &r0, r2, 34, 4        ; [] |43| _ms
+        SUB       r1, r0, 0x01          ; [] |43| 
+        SBBO      &r1, r2, 34, 4        ; [] |43| _ms
+        QBNE      ||$C$L24||, r0, 0x00  ; [] |43| 
 ;* --------------------------------------------------------------------------*
 ||$C$L25||:    
-        NOP       ; [] |42| 
+        NOP       ; [] |43| 
         .newblock
         LDI32    r0, 99995
 $1:     SUB      r0, r0, 1
-        QBNE     $1, r0, 0             ; [] |42| 
-	.dwendtag $C$DW$100
+        QBNE     $1, r0, 0             ; [] |43| 
+	.dwendtag $C$DW$101
 
-	.dwpsn	file "pru_main.c",line 51,column 26,is_stmt,isa 0
+	.dwpsn	file "pru_main.c",line 46,column 26,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  51 | struct rbuffer *rec_buf = (struct rbuffer *) (uint32_t) (SHARED_MEM_BAS
+;  46 | struct rbuffer *rec_buf = (struct rbuffer *) (uint32_t) (SHARED_MEM_BAS
 ;     | E);                                                                    
-;  53 | //  Receive buffer from host to PRU                                    
+;  48 | //  Receive buffer from host to PRU                                    
 ;----------------------------------------------------------------------
-        LDI32     r0, 0x00010000        ; [] |51| 
-        SBBO      &r0, r2, 0, 4         ; [] |51| rec_buf
-	.dwpsn	file "pru_main.c",line 54,column 35,is_stmt,isa 0
+        LDI32     r0, 0x00010000        ; [] |46| 
+        SBBO      &r0, r2, 0, 4         ; [] |46| rec_buf
+	.dwpsn	file "pru_main.c",line 49,column 35,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  54 | struct rbuffer *terminate_buf = (struct rbuffer *) (uint32_t) (SHARED_M
+;  49 | struct rbuffer *terminate_buf = (struct rbuffer *) (uint32_t) (SHARED_M
 ;     | EM_BASE + sizeof(struct rbuffer));                                     
-;  56 | struct iep_time time;                                                  
+;  51 | struct iep_time time;                                                  
 ;----------------------------------------------------------------------
-        LDI32     r0, 0x00010404        ; [] |54| 
-        SBBO      &r0, r2, 4, 4         ; [] |54| terminate_buf
-	.dwpsn	file "pru_main.c",line 57,column 5,is_stmt,isa 0
+        LDI32     r0, 0x00010404        ; [] |49| 
+        SBBO      &r0, r2, 4, 4         ; [] |49| terminate_buf
+	.dwpsn	file "pru_main.c",line 52,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  57 | init_iep_time(&time);                                                  
+;  52 | init_iep_time(&time);                                                  
 ;----------------------------------------------------------------------
-        ADD       r14, r2, 8            ; [] |57| time,time
-$C$DW$102	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$102, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$102, DW_AT_name("init_iep_time")
-	.dwattr $C$DW$102, DW_AT_TI_call
-        JAL       r3.w2, ||init_iep_time|| ; [] |57| init_iep_time
-	.dwpsn	file "pru_main.c",line 59,column 20,is_stmt,isa 0
+        ADD       r14, r2, 8            ; [] |52| time,time
+$C$DW$103	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$103, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$103, DW_AT_name("init_iep_time")
+	.dwattr $C$DW$103, DW_AT_TI_call
+        JAL       r3.w2, ||init_iep_time|| ; [] |52| init_iep_time
+	.dwpsn	file "pru_main.c",line 54,column 20,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  59 | uint32_t waitTime = 0;                                                 
-;  60 | //int curCycle = 0;                                                    
+;  54 | uint32_t waitTime = 0;                                                 
 ;----------------------------------------------------------------------
-        LDI       r0, 0x0000            ; [] |59| 
-        SBBO      &r0, r2, 28, 4        ; [] |59| waitTime
-	.dwpsn	file "pru_main.c",line 62,column 15,is_stmt,isa 0
+        LDI       r0, 0x0000            ; [] |54| 
+        SBBO      &r0, r2, 28, 4        ; [] |54| waitTime
+	.dwpsn	file "pru_main.c",line 56,column 15,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  62 | short status = -1;                                                     
+;  56 | short status = -1;                                                     
 ;----------------------------------------------------------------------
-        LDI       r0.w0, 0xffff         ; [] |62| 
-        SBBO      &r0.w0, r2, 32, 2     ; [] |62| status
-	.dwpsn	file "pru_main.c",line 64,column 11,is_stmt,isa 0
+        LDI       r0.w0, 0xffff         ; [] |56| 
+        SBBO      &r0.w0, r2, 32, 2     ; [] |56| status
+	.dwpsn	file "pru_main.c",line 58,column 11,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  64 | while(1) {                                                             
-;  65 |             //if received sigint from host terminate                   
+;  58 | while(1) {                                                             
+;  59 |             //if received sigint from host terminate                   
 ;----------------------------------------------------------------------
 ;* --------------------------------------------------------------------------*
 ;*   BEGIN LOOP ||$C$L26||
 ;*
-;*   Loop source line                : 64
-;*   Loop closing brace source line  : 121
+;*   Loop source line                : 58
+;*   Loop closing brace source line  : 96
 ;*   Known Minimum Trip Count        : 1
 ;*   Known Maximum Trip Count        : 4294967295
 ;*   Known Max Trip Count Factor     : 1
 ;* --------------------------------------------------------------------------*
 ||$C$L26||:    
-	.dwpsn	file "pru_main.c",line 66,column 3,is_stmt,isa 0
+	.dwpsn	file "pru_main.c",line 60,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  66 | if (rbuf_read_uint64(terminate_buf, &status)) {                        
+;  60 | if (rbuf_read_uint64(terminate_buf, &status)) {                        
 ;----------------------------------------------------------------------
-        LBBO      &r14, r2, 4, 4        ; [] |66| terminate_buf
-        ADD       r15, r2, 32           ; [] |66| status,status
-$C$DW$103	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$103, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$103, DW_AT_name("rbuf_read_uint64")
-	.dwattr $C$DW$103, DW_AT_TI_call
-        JAL       r3.w2, ||rbuf_read_uint64|| ; [] |66| rbuf_read_uint64
-        QBNE      ||$C$L27||, r14, 0x00 ; [] |66| 
-;* --------------------------------------------------------------------------*
-        QBEQ      ||$C$L28||, r15, 0x00 ; [] |66| 
-;* --------------------------------------------------------------------------*
-||$C$L27||:    
-	.dwpsn	file "pru_main.c",line 67,column 4,is_stmt,isa 0
-;----------------------------------------------------------------------
-;  67 | DISABLE_IEP_TMR();                                                     
-;----------------------------------------------------------------------
-        LDI       r0, ||IEP_REG||       ; [] |67| IEP_REG
-        LBBO      &r1, r0, 0, 4         ; [] |67| 
-        LDI       r0, 0x0000            ; [] |67| 
-        SBBO      &r0, r1, 0, 4         ; [] |67| 
-	.dwpsn	file "pru_main.c",line 68,column 4,is_stmt,isa 0
-;----------------------------------------------------------------------
-;  68 | terminate();                                                           
-;----------------------------------------------------------------------
+        LBBO      &r14, r2, 4, 4        ; [] |60| terminate_buf
+        ADD       r15, r2, 32           ; [] |60| status,status
 $C$DW$104	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$104, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$104, DW_AT_name("terminate")
+	.dwattr $C$DW$104, DW_AT_name("rbuf_read_uint64")
 	.dwattr $C$DW$104, DW_AT_TI_call
-        JAL       r3.w2, ||terminate||  ; [] |68| terminate
+        JAL       r3.w2, ||rbuf_read_uint64|| ; [] |60| rbuf_read_uint64
+        QBNE      ||$C$L27||, r14, 0x00 ; [] |60| 
 ;* --------------------------------------------------------------------------*
-||$C$L28||:    
-	.dwpsn	file "pru_main.c",line 71,column 3,is_stmt,isa 0
+        QBEQ      ||$C$L28||, r15, 0x00 ; [] |60| 
+;* --------------------------------------------------------------------------*
+||$C$L27||:    
+	.dwpsn	file "pru_main.c",line 61,column 4,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  71 | waitTime = rbuf_read_uint64(rec_buf, &status);                         
-;  72 | //if you received a new waitTime                                       
+;  61 | DISABLE_IEP_TMR();                                                     
 ;----------------------------------------------------------------------
-        LBBO      &r14, r2, 0, 4        ; [] |71| rec_buf
-        ADD       r15, r2, 32           ; [] |71| status,status
+        LDI       r0, ||IEP_REG||       ; [] |61| IEP_REG
+        LBBO      &r1, r0, 0, 4         ; [] |61| 
+        LDI       r0, 0x0000            ; [] |61| 
+        SBBO      &r0, r1, 0, 4         ; [] |61| 
+	.dwpsn	file "pru_main.c",line 62,column 4,is_stmt,isa 0
+;----------------------------------------------------------------------
+;  62 | terminate();                                                           
+;----------------------------------------------------------------------
 $C$DW$105	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$105, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$105, DW_AT_name("rbuf_read_uint64")
+	.dwattr $C$DW$105, DW_AT_name("terminate")
 	.dwattr $C$DW$105, DW_AT_TI_call
-        JAL       r3.w2, ||rbuf_read_uint64|| ; [] |71| rbuf_read_uint64
-        SBBO      &r14, r2, 28, 4       ; [] |71| waitTime
-	.dwpsn	file "pru_main.c",line 73,column 3,is_stmt,isa 0
-;----------------------------------------------------------------------
-;  73 | if(waitTime != 0) {                                                    
-;  74 |         //toggle pin for 50us                                          
-;----------------------------------------------------------------------
-        LBBO      &r0, r2, 28, 4        ; [] |73| waitTime
-        QBEQ      ||$C$L26||, r0, 0x00  ; [] |73| 
+        JAL       r3.w2, ||terminate||  ; [] |62| terminate
 ;* --------------------------------------------------------------------------*
-	.dwpsn	file "pru_main.c",line 76,column 4,is_stmt,isa 0
+||$C$L28||:    
+	.dwpsn	file "pru_main.c",line 65,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  76 | if(first) {                                                            
+;  65 | waitTime = rbuf_read_uint64(rec_buf, &status);                         
+;  67 | //if you received a new waitTime                                       
 ;----------------------------------------------------------------------
-        LDI       r0, ||first||         ; [] |76| first
-        LBBO      &r0, r0, 0, 4         ; [] |76| 
-        QBEQ      ||$C$L32||, r0, 0x00  ; [] |76| 
-;* --------------------------------------------------------------------------*
-	.dwpsn	file "pru_main.c",line 77,column 5,is_stmt,isa 0
-;----------------------------------------------------------------------
-;  77 | first = 0;                                                             
-;----------------------------------------------------------------------
-        LDI       r0, 0x0000            ; [] |77| 
-        LDI       r1, ||first||         ; [] |77| first
-        SBBO      &r0, r1, 0, 4         ; [] |77| 
-	.dwpsn	file "pru_main.c",line 78,column 5,is_stmt,isa 0
-;----------------------------------------------------------------------
-;  78 | curTime = iep_get_time(&time);                                         
-;----------------------------------------------------------------------
-        ADD       r14, r2, 8            ; [] |78| time,time
+        LBBO      &r14, r2, 0, 4        ; [] |65| rec_buf
+        ADD       r15, r2, 32           ; [] |65| status,status
 $C$DW$106	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$106, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$106, DW_AT_name("iep_get_time")
+	.dwattr $C$DW$106, DW_AT_name("rbuf_read_uint64")
 	.dwattr $C$DW$106, DW_AT_TI_call
-        JAL       r3.w2, ||iep_get_time|| ; [] |78| iep_get_time
-        LDI       r0, ||curTime||       ; [] |78| curTime
-        SBBO      &r14, r0, 0, 8        ; [] |78| 
-	.dwpsn	file "pru_main.c",line 79,column 5,is_stmt,isa 0
+        JAL       r3.w2, ||rbuf_read_uint64|| ; [] |65| rbuf_read_uint64
+        SBBO      &r14, r2, 28, 4       ; [] |65| waitTime
+	.dwpsn	file "pru_main.c",line 68,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  79 | prevTime = curTime;                                                    
+;  68 | if(waitTime != 0) {                                                    
+;  69 |         //toggle pin for 50us                                          
 ;----------------------------------------------------------------------
-        LBBO      &r0, r0, 0, 8         ; [] |79| 
-        LDI       r14, ||prevTime||     ; [] |79| prevTime
-        SBBO      &r0, r14, 0, 8        ; [] |79| 
-	.dwpsn	file "pru_main.c",line 80,column 5,is_stmt,isa 0
+        LBBO      &r0, r2, 28, 4        ; [] |68| waitTime
+        QBEQ      ||$C$L26||, r0, 0x00  ; [] |68| 
+;* --------------------------------------------------------------------------*
+	.dwpsn	file "pru_main.c",line 71,column 4,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  80 | assert_pin(P8_46);                                                     
+;  71 | if(first) {                                                            
 ;----------------------------------------------------------------------
-        LDI       r14, 0x0002           ; [] |80| 
+        LDI       r0, ||first||         ; [] |71| first
+        LBBO      &r0, r0, 0, 4         ; [] |71| 
+        QBEQ      ||$C$L32||, r0, 0x00  ; [] |71| 
+;* --------------------------------------------------------------------------*
+	.dwpsn	file "pru_main.c",line 72,column 5,is_stmt,isa 0
+;----------------------------------------------------------------------
+;  72 | first = 0;                                                             
+;----------------------------------------------------------------------
+        LDI       r0, 0x0000            ; [] |72| 
+        LDI       r1, ||first||         ; [] |72| first
+        SBBO      &r0, r1, 0, 4         ; [] |72| 
+	.dwpsn	file "pru_main.c",line 73,column 5,is_stmt,isa 0
+;----------------------------------------------------------------------
+;  73 | curTime = iep_get_time(&time);                                         
+;----------------------------------------------------------------------
+        ADD       r14, r2, 8            ; [] |73| time,time
 $C$DW$107	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$107, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$107, DW_AT_name("assert_pin")
+	.dwattr $C$DW$107, DW_AT_name("iep_get_time")
 	.dwattr $C$DW$107, DW_AT_TI_call
-        JAL       r3.w2, ||assert_pin|| ; [] |80| assert_pin
-	.dwpsn	file "pru_main.c",line 81,column 5,is_stmt,isa 0
+        JAL       r3.w2, ||iep_get_time|| ; [] |73| iep_get_time
+        LDI       r0, ||curTime||       ; [] |73| curTime
+        SBBO      &r14, r0, 0, 8        ; [] |73| 
+	.dwpsn	file "pru_main.c",line 74,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  81 | WAIT_US(50);                                                           
+;  74 | prevTime = curTime;                                                    
+;----------------------------------------------------------------------
+        LBBO      &r0, r0, 0, 8         ; [] |74| 
+        LDI       r14, ||prevTime||     ; [] |74| prevTime
+        SBBO      &r0, r14, 0, 8        ; [] |74| 
+	.dwpsn	file "pru_main.c",line 75,column 5,is_stmt,isa 0
+;----------------------------------------------------------------------
+;  75 | assert_pin(P8_46);                                                     
+;----------------------------------------------------------------------
+        LDI       r14, 0x0002           ; [] |75| 
+$C$DW$108	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$108, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$108, DW_AT_name("assert_pin")
+	.dwattr $C$DW$108, DW_AT_TI_call
+        JAL       r3.w2, ||assert_pin|| ; [] |75| assert_pin
+	.dwpsn	file "pru_main.c",line 76,column 5,is_stmt,isa 0
+;----------------------------------------------------------------------
+;  76 | WAIT_US(50);                                                           
 ;----------------------------------------------------------------------
 
-$C$DW$108	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
-$C$DW$109	.dwtag  DW_TAG_variable, DW_AT_name("_us")
-	.dwattr $C$DW$109, DW_AT_TI_symbol_name("_us")
-	.dwattr $C$DW$109, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$109, DW_AT_location[DW_OP_breg8 34]
-        LDI       r0, 0x0031            ; [] |81| 
-        SBBO      &r0, r2, 34, 4        ; [] |81| _us
-        SUB       r1, r0, 0x01          ; [] |81| 
-        SBBO      &r1, r2, 34, 4        ; [] |81| _us
-        QBEQ      ||$C$L30||, r0, 0x00  ; [] |81| 
+$C$DW$109	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
+$C$DW$110	.dwtag  DW_TAG_variable, DW_AT_name("_us")
+	.dwattr $C$DW$110, DW_AT_TI_symbol_name("_us")
+	.dwattr $C$DW$110, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$110, DW_AT_location[DW_OP_breg8 34]
+        LDI       r0, 0x0031            ; [] |76| 
+        SBBO      &r0, r2, 34, 4        ; [] |76| _us
+        SUB       r1, r0, 0x01          ; [] |76| 
+        SBBO      &r1, r2, 34, 4        ; [] |76| _us
+        QBEQ      ||$C$L30||, r0, 0x00  ; [] |76| 
 ;* --------------------------------------------------------------------------*
 ;*   BEGIN LOOP ||$C$L29||
 ;*
-;*   Loop source line                : 81
-;*   Loop closing brace source line  : 81
+;*   Loop source line                : 76
+;*   Loop closing brace source line  : 76
 ;*   Known Minimum Trip Count        : 1
 ;*   Known Maximum Trip Count        : 4294967295
 ;*   Known Max Trip Count Factor     : 1
@@ -2006,100 +2021,105 @@ $C$DW$109	.dwtag  DW_TAG_variable, DW_AT_name("_us")
         .newblock
         LDI      r0.w0, 96
 $1:     SUB      r0.w0, r0.w0, 1
-        QBNE     $1, r0.w0, 0          ; [] |81| 
-        LBBO      &r0, r2, 34, 4        ; [] |81| _us
-        SUB       r1, r0, 0x01          ; [] |81| 
-        SBBO      &r1, r2, 34, 4        ; [] |81| _us
-        QBNE      ||$C$L29||, r0, 0x00  ; [] |81| 
+        QBNE     $1, r0.w0, 0          ; [] |76| 
+        LBBO      &r0, r2, 34, 4        ; [] |76| _us
+        SUB       r1, r0, 0x01          ; [] |76| 
+        SBBO      &r1, r2, 34, 4        ; [] |76| _us
+        QBNE      ||$C$L29||, r0, 0x00  ; [] |76| 
 ;* --------------------------------------------------------------------------*
 ||$C$L30||:    
         .newblock
         LDI      r0.w0, 96
 $1:     SUB      r0.w0, r0.w0, 1
-        QBNE     $1, r0.w0, 0          ; [] |81| 
-	.dwendtag $C$DW$108
+        QBNE     $1, r0.w0, 0          ; [] |76| 
+	.dwendtag $C$DW$109
 
-	.dwpsn	file "pru_main.c",line 82,column 5,is_stmt,isa 0
+	.dwpsn	file "pru_main.c",line 77,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  82 | deassert_pin(P8_46);                                                   
-;  85 | //spin until it is time for the next pulse                             
+;  77 | deassert_pin(P8_46);                                                   
+;  80 | //spin until it is time for the next pulse                             
+;  81 | //offset for autograder error correction                               
 ;----------------------------------------------------------------------
-        LDI       r14, 0x0002           ; [] |82| 
-$C$DW$110	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$110, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$110, DW_AT_name("deassert_pin")
-	.dwattr $C$DW$110, DW_AT_TI_call
-        JAL       r3.w2, ||deassert_pin|| ; [] |82| deassert_pin
-	.dwpsn	file "pru_main.c",line 86,column 4,is_stmt,isa 0
-;----------------------------------------------------------------------
-;  86 | while((curTime - prevTime) < waitTime) {                               
-;----------------------------------------------------------------------
-        JMP       ||$C$L32||            ; [] |86| 
-;* --------------------------------------------------------------------------*
-||$C$L31||:    
-	.dwpsn	file "pru_main.c",line 87,column 5,is_stmt,isa 0
-;----------------------------------------------------------------------
-;  87 | curTime = iep_get_time(&time);                                         
-;  90 | //jump out of loop                                                     
-;----------------------------------------------------------------------
-        ADD       r14, r2, 8            ; [] |87| time,time
+        LDI       r14, 0x0002           ; [] |77| 
 $C$DW$111	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$111, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$111, DW_AT_name("iep_get_time")
+	.dwattr $C$DW$111, DW_AT_name("deassert_pin")
 	.dwattr $C$DW$111, DW_AT_TI_call
-        JAL       r3.w2, ||iep_get_time|| ; [] |87| iep_get_time
-        LDI       r0, ||curTime||       ; [] |87| curTime
-        SBBO      &r14, r0, 0, 8        ; [] |87| 
+        JAL       r3.w2, ||deassert_pin|| ; [] |77| deassert_pin
+	.dwpsn	file "pru_main.c",line 82,column 4,is_stmt,isa 0
+;----------------------------------------------------------------------
+;  82 | while((curTime - prevTime) < (waitTime + offset_ns)) {                 
+;----------------------------------------------------------------------
+        JMP       ||$C$L32||            ; [] |82| 
+;* --------------------------------------------------------------------------*
+||$C$L31||:    
+	.dwpsn	file "pru_main.c",line 83,column 5,is_stmt,isa 0
+;----------------------------------------------------------------------
+;  83 | curTime = iep_get_time(&time);                                         
+;  86 | //jump out of loop                                                     
+;----------------------------------------------------------------------
+        ADD       r14, r2, 8            ; [] |83| time,time
+$C$DW$112	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$112, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$112, DW_AT_name("iep_get_time")
+	.dwattr $C$DW$112, DW_AT_TI_call
+        JAL       r3.w2, ||iep_get_time|| ; [] |83| iep_get_time
+        LDI       r0, ||curTime||       ; [] |83| curTime
+        SBBO      &r14, r0, 0, 8        ; [] |83| 
 ;* --------------------------------------------------------------------------*
 ;*   BEGIN LOOP ||$C$L32||
 ;* --------------------------------------------------------------------------*
 ||$C$L32||:    
-	.dwpsn	file "pru_main.c",line 86,column 10,is_stmt,isa 0
-        LDI       r0, ||prevTime||      ; [] |86| prevTime
-        LBBO      &r0, r0, 0, 8         ; [] |86| 
-        LDI       r14, ||curTime||      ; [] |86| curTime
-        LBBO      &r14, r14, 0, 8       ; [] |86| 
-        RSB       r14, r0, r14          ; [] |86| 
-        RSC       r1, r1, r15           ; [] |86| 
-        LBBO      &r0, r2, 28, 4        ; [] |86| waitTime
-        ZERO      &r15, 4               ; [] |86| 
-        QBLT      ||$C$L31||, r15, r1   ; [] |86| 
+	.dwpsn	file "pru_main.c",line 82,column 10,is_stmt,isa 0
+        LBBO      &r0, r2, 28, 4        ; [] |82| waitTime
+        ZERO      &r1, 4                ; [] |82| 
+        LDI       r14, ||offset_ns||    ; [] |82| offset_ns
+        LBBO      &r14, r14, 0, 8       ; [] |82| 
+        ADD       r16, r14, r0          ; [] |82| 
+        ADC       r17, r15, r1          ; [] |82| 
+        LDI       r0, ||prevTime||      ; [] |82| prevTime
+        LBBO      &r0, r0, 0, 8         ; [] |82| 
+        LDI       r14, ||curTime||      ; [] |82| curTime
+        LBBO      &r14, r14, 0, 8       ; [] |82| 
+        RSB       r0, r0, r14           ; [] |82| 
+        RSC       r1, r1, r15           ; [] |82| 
+        QBLT      ||$C$L31||, r17, r1   ; [] |82| 
 ;* --------------------------------------------------------------------------*
-        QBGT      ||$C$L33||, r15, r1   ; [] |86| 
+        QBGT      ||$C$L33||, r17, r1   ; [] |82| 
 ;* --------------------------------------------------------------------------*
-        QBLT      ||$C$L31||, r0, r14   ; [] |86| 
+        QBLT      ||$C$L31||, r16, r0   ; [] |82| 
 ;* --------------------------------------------------------------------------*
 ||$C$L33||:    
-	.dwpsn	file "pru_main.c",line 92,column 4,is_stmt,isa 0
+	.dwpsn	file "pru_main.c",line 88,column 4,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  92 | assert_pin(P8_46);                                                     
+;  88 | assert_pin(P8_46);                                                     
 ;----------------------------------------------------------------------
-        LDI       r14, 0x0002           ; [] |92| 
-$C$DW$112	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$112, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$112, DW_AT_name("assert_pin")
-	.dwattr $C$DW$112, DW_AT_TI_call
-        JAL       r3.w2, ||assert_pin|| ; [] |92| assert_pin
-	.dwpsn	file "pru_main.c",line 93,column 4,is_stmt,isa 0
+        LDI       r14, 0x0002           ; [] |88| 
+$C$DW$113	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$113, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$113, DW_AT_name("assert_pin")
+	.dwattr $C$DW$113, DW_AT_TI_call
+        JAL       r3.w2, ||assert_pin|| ; [] |88| assert_pin
+	.dwpsn	file "pru_main.c",line 89,column 4,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  93 | WAIT_US(50);                                                           
+;  89 | WAIT_US(50);                                                           
 ;----------------------------------------------------------------------
 
-$C$DW$113	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
-$C$DW$114	.dwtag  DW_TAG_variable, DW_AT_name("_us")
-	.dwattr $C$DW$114, DW_AT_TI_symbol_name("_us")
-	.dwattr $C$DW$114, DW_AT_type(*$C$DW$T$11)
-	.dwattr $C$DW$114, DW_AT_location[DW_OP_breg8 34]
-        LDI       r0, 0x0031            ; [] |93| 
-        SBBO      &r0, r2, 34, 4        ; [] |93| _us
-        SUB       r1, r0, 0x01          ; [] |93| 
-        SBBO      &r1, r2, 34, 4        ; [] |93| _us
-        QBEQ      ||$C$L35||, r0, 0x00  ; [] |93| 
+$C$DW$114	.dwtag  DW_TAG_lexical_block, DW_AT_low_pc(0x00), DW_AT_high_pc(0x00)
+$C$DW$115	.dwtag  DW_TAG_variable, DW_AT_name("_us")
+	.dwattr $C$DW$115, DW_AT_TI_symbol_name("_us")
+	.dwattr $C$DW$115, DW_AT_type(*$C$DW$T$11)
+	.dwattr $C$DW$115, DW_AT_location[DW_OP_breg8 34]
+        LDI       r0, 0x0031            ; [] |89| 
+        SBBO      &r0, r2, 34, 4        ; [] |89| _us
+        SUB       r1, r0, 0x01          ; [] |89| 
+        SBBO      &r1, r2, 34, 4        ; [] |89| _us
+        QBEQ      ||$C$L35||, r0, 0x00  ; [] |89| 
 ;* --------------------------------------------------------------------------*
 ;*   BEGIN LOOP ||$C$L34||
 ;*
-;*   Loop source line                : 93
-;*   Loop closing brace source line  : 93
+;*   Loop source line                : 89
+;*   Loop closing brace source line  : 89
 ;*   Known Minimum Trip Count        : 1
 ;*   Known Maximum Trip Count        : 4294967295
 ;*   Known Max Trip Count Factor     : 1
@@ -2108,51 +2128,51 @@ $C$DW$114	.dwtag  DW_TAG_variable, DW_AT_name("_us")
         .newblock
         LDI      r0.w0, 96
 $1:     SUB      r0.w0, r0.w0, 1
-        QBNE     $1, r0.w0, 0          ; [] |93| 
-        LBBO      &r0, r2, 34, 4        ; [] |93| _us
-        SUB       r1, r0, 0x01          ; [] |93| 
-        SBBO      &r1, r2, 34, 4        ; [] |93| _us
-        QBNE      ||$C$L34||, r0, 0x00  ; [] |93| 
+        QBNE     $1, r0.w0, 0          ; [] |89| 
+        LBBO      &r0, r2, 34, 4        ; [] |89| _us
+        SUB       r1, r0, 0x01          ; [] |89| 
+        SBBO      &r1, r2, 34, 4        ; [] |89| _us
+        QBNE      ||$C$L34||, r0, 0x00  ; [] |89| 
 ;* --------------------------------------------------------------------------*
 ||$C$L35||:    
         .newblock
         LDI      r0.w0, 96
 $1:     SUB      r0.w0, r0.w0, 1
-        QBNE     $1, r0.w0, 0          ; [] |93| 
-	.dwendtag $C$DW$113
+        QBNE     $1, r0.w0, 0          ; [] |89| 
+	.dwendtag $C$DW$114
 
-	.dwpsn	file "pru_main.c",line 94,column 4,is_stmt,isa 0
+	.dwpsn	file "pru_main.c",line 90,column 4,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  94 | deassert_pin(P8_46);                                                   
+;  90 | deassert_pin(P8_46);                                                   
 ;----------------------------------------------------------------------
-        LDI       r14, 0x0002           ; [] |94| 
-$C$DW$115	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$115, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$115, DW_AT_name("deassert_pin")
-	.dwattr $C$DW$115, DW_AT_TI_call
-        JAL       r3.w2, ||deassert_pin|| ; [] |94| deassert_pin
-	.dwpsn	file "pru_main.c",line 95,column 4,is_stmt,isa 0
+        LDI       r14, 0x0002           ; [] |90| 
+$C$DW$116	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$116, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$116, DW_AT_name("deassert_pin")
+	.dwattr $C$DW$116, DW_AT_TI_call
+        JAL       r3.w2, ||deassert_pin|| ; [] |90| deassert_pin
+	.dwpsn	file "pru_main.c",line 91,column 4,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  95 | prevTime = curTime;                                                    
+;  91 | prevTime = curTime;                                                    
 ;----------------------------------------------------------------------
-        LDI       r0, ||curTime||       ; [] |95| curTime
-        LBBO      &r0, r0, 0, 8         ; [] |95| 
-        LDI       r14, ||prevTime||     ; [] |95| prevTime
-        SBBO      &r0, r14, 0, 8        ; [] |95| 
-	.dwpsn	file "pru_main.c",line 96,column 4,is_stmt,isa 0
+        LDI       r0, ||curTime||       ; [] |91| curTime
+        LBBO      &r0, r0, 0, 8         ; [] |91| 
+        LDI       r14, ||prevTime||     ; [] |91| prevTime
+        SBBO      &r0, r14, 0, 8        ; [] |91| 
+	.dwpsn	file "pru_main.c",line 92,column 4,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  96 | TRIG_INTC(3); // Trigger interrupt PRUEVENT_0                          
-;  98 | //ready for new wait time                                              
+;  92 | TRIG_INTC(3); // Trigger interrupt PRUEVENT_0                          
+;  94 | //ready for new waitTime                                               
 ;----------------------------------------------------------------------
-        LDI       r31, 0x0023           ; [] |96| 
-	.dwpsn	file "pru_main.c",line 64,column 11,is_stmt,isa 0
-        JMP       ||$C$L26||            ; [] |64| 
+        LDI       r31, 0x0023           ; [] |92| 
+	.dwpsn	file "pru_main.c",line 58,column 11,is_stmt,isa 0
+        JMP       ||$C$L26||            ; [] |58| 
 ;* --------------------------------------------------------------------------*
-	.dwattr $C$DW$94, DW_AT_TI_end_file("pru_main.c")
-	.dwattr $C$DW$94, DW_AT_TI_end_line(0x7a)
-	.dwattr $C$DW$94, DW_AT_TI_end_column(0x01)
+	.dwattr $C$DW$95, DW_AT_TI_end_file("pru_main.c")
+	.dwattr $C$DW$95, DW_AT_TI_end_line(0x61)
+	.dwattr $C$DW$95, DW_AT_TI_end_column(0x01)
 	.dwendentry
-	.dwendtag $C$DW$94
+	.dwendtag $C$DW$95
 
 ;*****************************************************************************
 ;* UNDEFINED EXTERNAL REFERENCES                                             *
@@ -2250,8 +2270,8 @@ $C$DW$T$24	.dwtag  DW_TAG_array_type
 	.dwattr $C$DW$T$24, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$T$24, DW_AT_language(DW_LANG_C)
 	.dwattr $C$DW$T$24, DW_AT_byte_size(0x400)
-$C$DW$116	.dwtag  DW_TAG_subrange_type
-	.dwattr $C$DW$116, DW_AT_upper_bound(0xff)
+$C$DW$117	.dwtag  DW_TAG_subrange_type
+	.dwattr $C$DW$117, DW_AT_upper_bound(0xff)
 	.dwendtag $C$DW$T$24
 
 $C$DW$T$49	.dwtag  DW_TAG_pointer_type
@@ -2301,33 +2321,33 @@ $C$DW$T$18	.dwtag  DW_TAG_base_type
 $C$DW$T$22	.dwtag  DW_TAG_structure_type
 	.dwattr $C$DW$T$22, DW_AT_name("iep_time")
 	.dwattr $C$DW$T$22, DW_AT_byte_size(0x14)
-$C$DW$117	.dwtag  DW_TAG_member
-	.dwattr $C$DW$117, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$117, DW_AT_name("ts_ns")
-	.dwattr $C$DW$117, DW_AT_TI_symbol_name("ts_ns")
-	.dwattr $C$DW$117, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
-	.dwattr $C$DW$117, DW_AT_accessibility(DW_ACCESS_public)
-	.dwattr $C$DW$117, DW_AT_decl_file("../../include/nesl_pru_iep.h")
-	.dwattr $C$DW$117, DW_AT_decl_line(0x16)
-	.dwattr $C$DW$117, DW_AT_decl_column(0x0e)
 $C$DW$118	.dwtag  DW_TAG_member
-	.dwattr $C$DW$118, DW_AT_type(*$C$DW$T$20)
-	.dwattr $C$DW$118, DW_AT_name("last_iep_cnt")
-	.dwattr $C$DW$118, DW_AT_TI_symbol_name("last_iep_cnt")
-	.dwattr $C$DW$118, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
+	.dwattr $C$DW$118, DW_AT_type(*$C$DW$T$19)
+	.dwattr $C$DW$118, DW_AT_name("ts_ns")
+	.dwattr $C$DW$118, DW_AT_TI_symbol_name("ts_ns")
+	.dwattr $C$DW$118, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
 	.dwattr $C$DW$118, DW_AT_accessibility(DW_ACCESS_public)
 	.dwattr $C$DW$118, DW_AT_decl_file("../../include/nesl_pru_iep.h")
-	.dwattr $C$DW$118, DW_AT_decl_line(0x17)
+	.dwattr $C$DW$118, DW_AT_decl_line(0x16)
 	.dwattr $C$DW$118, DW_AT_decl_column(0x0e)
 $C$DW$119	.dwtag  DW_TAG_member
-	.dwattr $C$DW$119, DW_AT_type(*$C$DW$T$21)
-	.dwattr $C$DW$119, DW_AT_name("offset")
-	.dwattr $C$DW$119, DW_AT_TI_symbol_name("offset")
-	.dwattr $C$DW$119, DW_AT_data_member_location[DW_OP_plus_uconst 0xc]
+	.dwattr $C$DW$119, DW_AT_type(*$C$DW$T$20)
+	.dwattr $C$DW$119, DW_AT_name("last_iep_cnt")
+	.dwattr $C$DW$119, DW_AT_TI_symbol_name("last_iep_cnt")
+	.dwattr $C$DW$119, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
 	.dwattr $C$DW$119, DW_AT_accessibility(DW_ACCESS_public)
 	.dwattr $C$DW$119, DW_AT_decl_file("../../include/nesl_pru_iep.h")
-	.dwattr $C$DW$119, DW_AT_decl_line(0x18)
-	.dwattr $C$DW$119, DW_AT_decl_column(0x0d)
+	.dwattr $C$DW$119, DW_AT_decl_line(0x17)
+	.dwattr $C$DW$119, DW_AT_decl_column(0x0e)
+$C$DW$120	.dwtag  DW_TAG_member
+	.dwattr $C$DW$120, DW_AT_type(*$C$DW$T$21)
+	.dwattr $C$DW$120, DW_AT_name("offset")
+	.dwattr $C$DW$120, DW_AT_TI_symbol_name("offset")
+	.dwattr $C$DW$120, DW_AT_data_member_location[DW_OP_plus_uconst 0xc]
+	.dwattr $C$DW$120, DW_AT_accessibility(DW_ACCESS_public)
+	.dwattr $C$DW$120, DW_AT_decl_file("../../include/nesl_pru_iep.h")
+	.dwattr $C$DW$120, DW_AT_decl_line(0x18)
+	.dwattr $C$DW$120, DW_AT_decl_column(0x0d)
 	.dwendtag $C$DW$T$22
 
 	.dwattr $C$DW$T$22, DW_AT_decl_file("../../include/nesl_pru_iep.h")
@@ -2340,62 +2360,62 @@ $C$DW$T$33	.dwtag  DW_TAG_pointer_type
 $C$DW$T$39	.dwtag  DW_TAG_enumeration_type
 	.dwattr $C$DW$T$39, DW_AT_name("pru_pin")
 	.dwattr $C$DW$T$39, DW_AT_byte_size(0x04)
-$C$DW$120	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_20"), DW_AT_const_value(0x2000)
-	.dwattr $C$DW$120, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$120, DW_AT_decl_line(0x1e)
-	.dwattr $C$DW$120, DW_AT_decl_column(0x05)
-$C$DW$121	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_21"), DW_AT_const_value(0x1000)
+$C$DW$121	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_20"), DW_AT_const_value(0x2000)
 	.dwattr $C$DW$121, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$121, DW_AT_decl_line(0x1f)
+	.dwattr $C$DW$121, DW_AT_decl_line(0x1e)
 	.dwattr $C$DW$121, DW_AT_decl_column(0x05)
-$C$DW$122	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_27"), DW_AT_const_value(0x100)
+$C$DW$122	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_21"), DW_AT_const_value(0x1000)
 	.dwattr $C$DW$122, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$122, DW_AT_decl_line(0x20)
+	.dwattr $C$DW$122, DW_AT_decl_line(0x1f)
 	.dwattr $C$DW$122, DW_AT_decl_column(0x05)
-$C$DW$123	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_28"), DW_AT_const_value(0x400)
+$C$DW$123	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_27"), DW_AT_const_value(0x100)
 	.dwattr $C$DW$123, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$123, DW_AT_decl_line(0x21)
+	.dwattr $C$DW$123, DW_AT_decl_line(0x20)
 	.dwattr $C$DW$123, DW_AT_decl_column(0x05)
-$C$DW$124	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_29"), DW_AT_const_value(0x200)
+$C$DW$124	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_28"), DW_AT_const_value(0x400)
 	.dwattr $C$DW$124, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$124, DW_AT_decl_line(0x22)
+	.dwattr $C$DW$124, DW_AT_decl_line(0x21)
 	.dwattr $C$DW$124, DW_AT_decl_column(0x05)
-$C$DW$125	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_39"), DW_AT_const_value(0x40)
+$C$DW$125	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_29"), DW_AT_const_value(0x200)
 	.dwattr $C$DW$125, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$125, DW_AT_decl_line(0x23)
+	.dwattr $C$DW$125, DW_AT_decl_line(0x22)
 	.dwattr $C$DW$125, DW_AT_decl_column(0x05)
-$C$DW$126	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_40"), DW_AT_const_value(0x80)
+$C$DW$126	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_39"), DW_AT_const_value(0x40)
 	.dwattr $C$DW$126, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$126, DW_AT_decl_line(0x24)
+	.dwattr $C$DW$126, DW_AT_decl_line(0x23)
 	.dwattr $C$DW$126, DW_AT_decl_column(0x05)
-$C$DW$127	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_41"), DW_AT_const_value(0x10)
+$C$DW$127	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_40"), DW_AT_const_value(0x80)
 	.dwattr $C$DW$127, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$127, DW_AT_decl_line(0x25)
+	.dwattr $C$DW$127, DW_AT_decl_line(0x24)
 	.dwattr $C$DW$127, DW_AT_decl_column(0x05)
-$C$DW$128	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_42"), DW_AT_const_value(0x20)
+$C$DW$128	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_41"), DW_AT_const_value(0x10)
 	.dwattr $C$DW$128, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$128, DW_AT_decl_line(0x26)
+	.dwattr $C$DW$128, DW_AT_decl_line(0x25)
 	.dwattr $C$DW$128, DW_AT_decl_column(0x05)
-$C$DW$129	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_43"), DW_AT_const_value(0x04)
+$C$DW$129	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_42"), DW_AT_const_value(0x20)
 	.dwattr $C$DW$129, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$129, DW_AT_decl_line(0x27)
+	.dwattr $C$DW$129, DW_AT_decl_line(0x26)
 	.dwattr $C$DW$129, DW_AT_decl_column(0x05)
-$C$DW$130	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_44"), DW_AT_const_value(0x08)
+$C$DW$130	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_43"), DW_AT_const_value(0x04)
 	.dwattr $C$DW$130, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$130, DW_AT_decl_line(0x28)
+	.dwattr $C$DW$130, DW_AT_decl_line(0x27)
 	.dwattr $C$DW$130, DW_AT_decl_column(0x05)
-$C$DW$131	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_45"), DW_AT_const_value(0x01)
+$C$DW$131	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_44"), DW_AT_const_value(0x08)
 	.dwattr $C$DW$131, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$131, DW_AT_decl_line(0x29)
+	.dwattr $C$DW$131, DW_AT_decl_line(0x28)
 	.dwattr $C$DW$131, DW_AT_decl_column(0x05)
-$C$DW$132	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_46"), DW_AT_const_value(0x02)
+$C$DW$132	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_45"), DW_AT_const_value(0x01)
 	.dwattr $C$DW$132, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$132, DW_AT_decl_line(0x2a)
+	.dwattr $C$DW$132, DW_AT_decl_line(0x29)
 	.dwattr $C$DW$132, DW_AT_decl_column(0x05)
-$C$DW$133	.dwtag  DW_TAG_enumerator, DW_AT_name("P9_26"), DW_AT_const_value(0x10000)
+$C$DW$133	.dwtag  DW_TAG_enumerator, DW_AT_name("P8_46"), DW_AT_const_value(0x02)
 	.dwattr $C$DW$133, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
-	.dwattr $C$DW$133, DW_AT_decl_line(0x2b)
+	.dwattr $C$DW$133, DW_AT_decl_line(0x2a)
 	.dwattr $C$DW$133, DW_AT_decl_column(0x05)
+$C$DW$134	.dwtag  DW_TAG_enumerator, DW_AT_name("P9_26"), DW_AT_const_value(0x10000)
+	.dwattr $C$DW$134, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
+	.dwattr $C$DW$134, DW_AT_decl_line(0x2b)
+	.dwattr $C$DW$134, DW_AT_decl_column(0x05)
 	.dwendtag $C$DW$T$39
 
 	.dwattr $C$DW$T$39, DW_AT_decl_file("../../include/nesl_pru_gpio.h")
@@ -2405,33 +2425,33 @@ $C$DW$133	.dwtag  DW_TAG_enumerator, DW_AT_name("P9_26"), DW_AT_const_value(0x10
 $C$DW$T$25	.dwtag  DW_TAG_structure_type
 	.dwattr $C$DW$T$25, DW_AT_name("rbuffer")
 	.dwattr $C$DW$T$25, DW_AT_byte_size(0x404)
-$C$DW$134	.dwtag  DW_TAG_member
-	.dwattr $C$DW$134, DW_AT_type(*$C$DW$T$23)
-	.dwattr $C$DW$134, DW_AT_name("c")
-	.dwattr $C$DW$134, DW_AT_TI_symbol_name("c")
-	.dwattr $C$DW$134, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
-	.dwattr $C$DW$134, DW_AT_accessibility(DW_ACCESS_public)
-	.dwattr $C$DW$134, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$134, DW_AT_decl_line(0x14)
-	.dwattr $C$DW$134, DW_AT_decl_column(0x0e)
 $C$DW$135	.dwtag  DW_TAG_member
 	.dwattr $C$DW$135, DW_AT_type(*$C$DW$T$23)
-	.dwattr $C$DW$135, DW_AT_name("p")
-	.dwattr $C$DW$135, DW_AT_TI_symbol_name("p")
-	.dwattr $C$DW$135, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+	.dwattr $C$DW$135, DW_AT_name("c")
+	.dwattr $C$DW$135, DW_AT_TI_symbol_name("c")
+	.dwattr $C$DW$135, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
 	.dwattr $C$DW$135, DW_AT_accessibility(DW_ACCESS_public)
 	.dwattr $C$DW$135, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$135, DW_AT_decl_line(0x15)
+	.dwattr $C$DW$135, DW_AT_decl_line(0x14)
 	.dwattr $C$DW$135, DW_AT_decl_column(0x0e)
 $C$DW$136	.dwtag  DW_TAG_member
-	.dwattr $C$DW$136, DW_AT_type(*$C$DW$T$24)
-	.dwattr $C$DW$136, DW_AT_name("buffer")
-	.dwattr $C$DW$136, DW_AT_TI_symbol_name("buffer")
-	.dwattr $C$DW$136, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+	.dwattr $C$DW$136, DW_AT_type(*$C$DW$T$23)
+	.dwattr $C$DW$136, DW_AT_name("p")
+	.dwattr $C$DW$136, DW_AT_TI_symbol_name("p")
+	.dwattr $C$DW$136, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
 	.dwattr $C$DW$136, DW_AT_accessibility(DW_ACCESS_public)
 	.dwattr $C$DW$136, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
-	.dwattr $C$DW$136, DW_AT_decl_line(0x16)
+	.dwattr $C$DW$136, DW_AT_decl_line(0x15)
 	.dwattr $C$DW$136, DW_AT_decl_column(0x0e)
+$C$DW$137	.dwtag  DW_TAG_member
+	.dwattr $C$DW$137, DW_AT_type(*$C$DW$T$24)
+	.dwattr $C$DW$137, DW_AT_name("buffer")
+	.dwattr $C$DW$137, DW_AT_TI_symbol_name("buffer")
+	.dwattr $C$DW$137, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+	.dwattr $C$DW$137, DW_AT_accessibility(DW_ACCESS_public)
+	.dwattr $C$DW$137, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
+	.dwattr $C$DW$137, DW_AT_decl_line(0x16)
+	.dwattr $C$DW$137, DW_AT_decl_column(0x0e)
 	.dwendtag $C$DW$T$25
 
 	.dwattr $C$DW$T$25, DW_AT_decl_file("../../include/nesl_pru_rbuffer.h")
@@ -2589,261 +2609,261 @@ $C$DW$CIE	.dwcie 14
 ;* DWARF REGISTER MAP                                          *
 ;***************************************************************
 
-$C$DW$137	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R0_b0")
-	.dwattr $C$DW$137, DW_AT_location[DW_OP_reg0]
-$C$DW$138	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R0_b1")
-	.dwattr $C$DW$138, DW_AT_location[DW_OP_reg1]
-$C$DW$139	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R0_b2")
-	.dwattr $C$DW$139, DW_AT_location[DW_OP_reg2]
-$C$DW$140	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R0_b3")
-	.dwattr $C$DW$140, DW_AT_location[DW_OP_reg3]
-$C$DW$141	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R1_b0")
-	.dwattr $C$DW$141, DW_AT_location[DW_OP_reg4]
-$C$DW$142	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R1_b1")
-	.dwattr $C$DW$142, DW_AT_location[DW_OP_reg5]
-$C$DW$143	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R1_b2")
-	.dwattr $C$DW$143, DW_AT_location[DW_OP_reg6]
-$C$DW$144	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R1_b3")
-	.dwattr $C$DW$144, DW_AT_location[DW_OP_reg7]
-$C$DW$145	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R2_b0")
-	.dwattr $C$DW$145, DW_AT_location[DW_OP_reg8]
-$C$DW$146	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R2_b1")
-	.dwattr $C$DW$146, DW_AT_location[DW_OP_reg9]
-$C$DW$147	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R2_b2")
-	.dwattr $C$DW$147, DW_AT_location[DW_OP_reg10]
-$C$DW$148	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R2_b3")
-	.dwattr $C$DW$148, DW_AT_location[DW_OP_reg11]
-$C$DW$149	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R3_b0")
-	.dwattr $C$DW$149, DW_AT_location[DW_OP_reg12]
-$C$DW$150	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R3_b1")
-	.dwattr $C$DW$150, DW_AT_location[DW_OP_reg13]
-$C$DW$151	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R3_b2")
-	.dwattr $C$DW$151, DW_AT_location[DW_OP_reg14]
-$C$DW$152	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R3_b3")
-	.dwattr $C$DW$152, DW_AT_location[DW_OP_reg15]
-$C$DW$153	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R4_b0")
-	.dwattr $C$DW$153, DW_AT_location[DW_OP_reg16]
-$C$DW$154	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R4_b1")
-	.dwattr $C$DW$154, DW_AT_location[DW_OP_reg17]
-$C$DW$155	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R4_b2")
-	.dwattr $C$DW$155, DW_AT_location[DW_OP_reg18]
-$C$DW$156	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R4_b3")
-	.dwattr $C$DW$156, DW_AT_location[DW_OP_reg19]
-$C$DW$157	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R5_b0")
-	.dwattr $C$DW$157, DW_AT_location[DW_OP_reg20]
-$C$DW$158	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R5_b1")
-	.dwattr $C$DW$158, DW_AT_location[DW_OP_reg21]
-$C$DW$159	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R5_b2")
-	.dwattr $C$DW$159, DW_AT_location[DW_OP_reg22]
-$C$DW$160	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R5_b3")
-	.dwattr $C$DW$160, DW_AT_location[DW_OP_reg23]
-$C$DW$161	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R6_b0")
-	.dwattr $C$DW$161, DW_AT_location[DW_OP_reg24]
-$C$DW$162	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R6_b1")
-	.dwattr $C$DW$162, DW_AT_location[DW_OP_reg25]
-$C$DW$163	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R6_b2")
-	.dwattr $C$DW$163, DW_AT_location[DW_OP_reg26]
-$C$DW$164	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R6_b3")
-	.dwattr $C$DW$164, DW_AT_location[DW_OP_reg27]
-$C$DW$165	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R7_b0")
-	.dwattr $C$DW$165, DW_AT_location[DW_OP_reg28]
-$C$DW$166	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R7_b1")
-	.dwattr $C$DW$166, DW_AT_location[DW_OP_reg29]
-$C$DW$167	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R7_b2")
-	.dwattr $C$DW$167, DW_AT_location[DW_OP_reg30]
-$C$DW$168	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R7_b3")
-	.dwattr $C$DW$168, DW_AT_location[DW_OP_reg31]
-$C$DW$169	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R8_b0")
-	.dwattr $C$DW$169, DW_AT_location[DW_OP_regx 0x20]
-$C$DW$170	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R8_b1")
-	.dwattr $C$DW$170, DW_AT_location[DW_OP_regx 0x21]
-$C$DW$171	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R8_b2")
-	.dwattr $C$DW$171, DW_AT_location[DW_OP_regx 0x22]
-$C$DW$172	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R8_b3")
-	.dwattr $C$DW$172, DW_AT_location[DW_OP_regx 0x23]
-$C$DW$173	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R9_b0")
-	.dwattr $C$DW$173, DW_AT_location[DW_OP_regx 0x24]
-$C$DW$174	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R9_b1")
-	.dwattr $C$DW$174, DW_AT_location[DW_OP_regx 0x25]
-$C$DW$175	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R9_b2")
-	.dwattr $C$DW$175, DW_AT_location[DW_OP_regx 0x26]
-$C$DW$176	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R9_b3")
-	.dwattr $C$DW$176, DW_AT_location[DW_OP_regx 0x27]
-$C$DW$177	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R10_b0")
-	.dwattr $C$DW$177, DW_AT_location[DW_OP_regx 0x28]
-$C$DW$178	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R10_b1")
-	.dwattr $C$DW$178, DW_AT_location[DW_OP_regx 0x29]
-$C$DW$179	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R10_b2")
-	.dwattr $C$DW$179, DW_AT_location[DW_OP_regx 0x2a]
-$C$DW$180	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R10_b3")
-	.dwattr $C$DW$180, DW_AT_location[DW_OP_regx 0x2b]
-$C$DW$181	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R11_b0")
-	.dwattr $C$DW$181, DW_AT_location[DW_OP_regx 0x2c]
-$C$DW$182	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R11_b1")
-	.dwattr $C$DW$182, DW_AT_location[DW_OP_regx 0x2d]
-$C$DW$183	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R11_b2")
-	.dwattr $C$DW$183, DW_AT_location[DW_OP_regx 0x2e]
-$C$DW$184	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R11_b3")
-	.dwattr $C$DW$184, DW_AT_location[DW_OP_regx 0x2f]
-$C$DW$185	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R12_b0")
-	.dwattr $C$DW$185, DW_AT_location[DW_OP_regx 0x30]
-$C$DW$186	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R12_b1")
-	.dwattr $C$DW$186, DW_AT_location[DW_OP_regx 0x31]
-$C$DW$187	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R12_b2")
-	.dwattr $C$DW$187, DW_AT_location[DW_OP_regx 0x32]
-$C$DW$188	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R12_b3")
-	.dwattr $C$DW$188, DW_AT_location[DW_OP_regx 0x33]
-$C$DW$189	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R13_b0")
-	.dwattr $C$DW$189, DW_AT_location[DW_OP_regx 0x34]
-$C$DW$190	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R13_b1")
-	.dwattr $C$DW$190, DW_AT_location[DW_OP_regx 0x35]
-$C$DW$191	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R13_b2")
-	.dwattr $C$DW$191, DW_AT_location[DW_OP_regx 0x36]
-$C$DW$192	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R13_b3")
-	.dwattr $C$DW$192, DW_AT_location[DW_OP_regx 0x37]
-$C$DW$193	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R14_b0")
-	.dwattr $C$DW$193, DW_AT_location[DW_OP_regx 0x38]
-$C$DW$194	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R14_b1")
-	.dwattr $C$DW$194, DW_AT_location[DW_OP_regx 0x39]
-$C$DW$195	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R14_b2")
-	.dwattr $C$DW$195, DW_AT_location[DW_OP_regx 0x3a]
-$C$DW$196	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R14_b3")
-	.dwattr $C$DW$196, DW_AT_location[DW_OP_regx 0x3b]
-$C$DW$197	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R15_b0")
-	.dwattr $C$DW$197, DW_AT_location[DW_OP_regx 0x3c]
-$C$DW$198	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R15_b1")
-	.dwattr $C$DW$198, DW_AT_location[DW_OP_regx 0x3d]
-$C$DW$199	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R15_b2")
-	.dwattr $C$DW$199, DW_AT_location[DW_OP_regx 0x3e]
-$C$DW$200	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R15_b3")
-	.dwattr $C$DW$200, DW_AT_location[DW_OP_regx 0x3f]
-$C$DW$201	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R16_b0")
-	.dwattr $C$DW$201, DW_AT_location[DW_OP_regx 0x40]
-$C$DW$202	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R16_b1")
-	.dwattr $C$DW$202, DW_AT_location[DW_OP_regx 0x41]
-$C$DW$203	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R16_b2")
-	.dwattr $C$DW$203, DW_AT_location[DW_OP_regx 0x42]
-$C$DW$204	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R16_b3")
-	.dwattr $C$DW$204, DW_AT_location[DW_OP_regx 0x43]
-$C$DW$205	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R17_b0")
-	.dwattr $C$DW$205, DW_AT_location[DW_OP_regx 0x44]
-$C$DW$206	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R17_b1")
-	.dwattr $C$DW$206, DW_AT_location[DW_OP_regx 0x45]
-$C$DW$207	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R17_b2")
-	.dwattr $C$DW$207, DW_AT_location[DW_OP_regx 0x46]
-$C$DW$208	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R17_b3")
-	.dwattr $C$DW$208, DW_AT_location[DW_OP_regx 0x47]
-$C$DW$209	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R18_b0")
-	.dwattr $C$DW$209, DW_AT_location[DW_OP_regx 0x48]
-$C$DW$210	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R18_b1")
-	.dwattr $C$DW$210, DW_AT_location[DW_OP_regx 0x49]
-$C$DW$211	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R18_b2")
-	.dwattr $C$DW$211, DW_AT_location[DW_OP_regx 0x4a]
-$C$DW$212	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R18_b3")
-	.dwattr $C$DW$212, DW_AT_location[DW_OP_regx 0x4b]
-$C$DW$213	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R19_b0")
-	.dwattr $C$DW$213, DW_AT_location[DW_OP_regx 0x4c]
-$C$DW$214	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R19_b1")
-	.dwattr $C$DW$214, DW_AT_location[DW_OP_regx 0x4d]
-$C$DW$215	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R19_b2")
-	.dwattr $C$DW$215, DW_AT_location[DW_OP_regx 0x4e]
-$C$DW$216	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R19_b3")
-	.dwattr $C$DW$216, DW_AT_location[DW_OP_regx 0x4f]
-$C$DW$217	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R20_b0")
-	.dwattr $C$DW$217, DW_AT_location[DW_OP_regx 0x50]
-$C$DW$218	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R20_b1")
-	.dwattr $C$DW$218, DW_AT_location[DW_OP_regx 0x51]
-$C$DW$219	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R20_b2")
-	.dwattr $C$DW$219, DW_AT_location[DW_OP_regx 0x52]
-$C$DW$220	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R20_b3")
-	.dwattr $C$DW$220, DW_AT_location[DW_OP_regx 0x53]
-$C$DW$221	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R21_b0")
-	.dwattr $C$DW$221, DW_AT_location[DW_OP_regx 0x54]
-$C$DW$222	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R21_b1")
-	.dwattr $C$DW$222, DW_AT_location[DW_OP_regx 0x55]
-$C$DW$223	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R21_b2")
-	.dwattr $C$DW$223, DW_AT_location[DW_OP_regx 0x56]
-$C$DW$224	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R21_b3")
-	.dwattr $C$DW$224, DW_AT_location[DW_OP_regx 0x57]
-$C$DW$225	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R22_b0")
-	.dwattr $C$DW$225, DW_AT_location[DW_OP_regx 0x58]
-$C$DW$226	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R22_b1")
-	.dwattr $C$DW$226, DW_AT_location[DW_OP_regx 0x59]
-$C$DW$227	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R22_b2")
-	.dwattr $C$DW$227, DW_AT_location[DW_OP_regx 0x5a]
-$C$DW$228	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R22_b3")
-	.dwattr $C$DW$228, DW_AT_location[DW_OP_regx 0x5b]
-$C$DW$229	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R23_b0")
-	.dwattr $C$DW$229, DW_AT_location[DW_OP_regx 0x5c]
-$C$DW$230	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R23_b1")
-	.dwattr $C$DW$230, DW_AT_location[DW_OP_regx 0x5d]
-$C$DW$231	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R23_b2")
-	.dwattr $C$DW$231, DW_AT_location[DW_OP_regx 0x5e]
-$C$DW$232	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R23_b3")
-	.dwattr $C$DW$232, DW_AT_location[DW_OP_regx 0x5f]
-$C$DW$233	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R24_b0")
-	.dwattr $C$DW$233, DW_AT_location[DW_OP_regx 0x60]
-$C$DW$234	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R24_b1")
-	.dwattr $C$DW$234, DW_AT_location[DW_OP_regx 0x61]
-$C$DW$235	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R24_b2")
-	.dwattr $C$DW$235, DW_AT_location[DW_OP_regx 0x62]
-$C$DW$236	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R24_b3")
-	.dwattr $C$DW$236, DW_AT_location[DW_OP_regx 0x63]
-$C$DW$237	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R25_b0")
-	.dwattr $C$DW$237, DW_AT_location[DW_OP_regx 0x64]
-$C$DW$238	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R25_b1")
-	.dwattr $C$DW$238, DW_AT_location[DW_OP_regx 0x65]
-$C$DW$239	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R25_b2")
-	.dwattr $C$DW$239, DW_AT_location[DW_OP_regx 0x66]
-$C$DW$240	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R25_b3")
-	.dwattr $C$DW$240, DW_AT_location[DW_OP_regx 0x67]
-$C$DW$241	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R26_b0")
-	.dwattr $C$DW$241, DW_AT_location[DW_OP_regx 0x68]
-$C$DW$242	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R26_b1")
-	.dwattr $C$DW$242, DW_AT_location[DW_OP_regx 0x69]
-$C$DW$243	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R26_b2")
-	.dwattr $C$DW$243, DW_AT_location[DW_OP_regx 0x6a]
-$C$DW$244	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R26_b3")
-	.dwattr $C$DW$244, DW_AT_location[DW_OP_regx 0x6b]
-$C$DW$245	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R27_b0")
-	.dwattr $C$DW$245, DW_AT_location[DW_OP_regx 0x6c]
-$C$DW$246	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R27_b1")
-	.dwattr $C$DW$246, DW_AT_location[DW_OP_regx 0x6d]
-$C$DW$247	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R27_b2")
-	.dwattr $C$DW$247, DW_AT_location[DW_OP_regx 0x6e]
-$C$DW$248	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R27_b3")
-	.dwattr $C$DW$248, DW_AT_location[DW_OP_regx 0x6f]
-$C$DW$249	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R28_b0")
-	.dwattr $C$DW$249, DW_AT_location[DW_OP_regx 0x70]
-$C$DW$250	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R28_b1")
-	.dwattr $C$DW$250, DW_AT_location[DW_OP_regx 0x71]
-$C$DW$251	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R28_b2")
-	.dwattr $C$DW$251, DW_AT_location[DW_OP_regx 0x72]
-$C$DW$252	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R28_b3")
-	.dwattr $C$DW$252, DW_AT_location[DW_OP_regx 0x73]
-$C$DW$253	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R29_b0")
-	.dwattr $C$DW$253, DW_AT_location[DW_OP_regx 0x74]
-$C$DW$254	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R29_b1")
-	.dwattr $C$DW$254, DW_AT_location[DW_OP_regx 0x75]
-$C$DW$255	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R29_b2")
-	.dwattr $C$DW$255, DW_AT_location[DW_OP_regx 0x76]
-$C$DW$256	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R29_b3")
-	.dwattr $C$DW$256, DW_AT_location[DW_OP_regx 0x77]
-$C$DW$257	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R30_b0")
-	.dwattr $C$DW$257, DW_AT_location[DW_OP_regx 0x78]
-$C$DW$258	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R30_b1")
-	.dwattr $C$DW$258, DW_AT_location[DW_OP_regx 0x79]
-$C$DW$259	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R30_b2")
-	.dwattr $C$DW$259, DW_AT_location[DW_OP_regx 0x7a]
-$C$DW$260	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R30_b3")
-	.dwattr $C$DW$260, DW_AT_location[DW_OP_regx 0x7b]
-$C$DW$261	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R31_b0")
-	.dwattr $C$DW$261, DW_AT_location[DW_OP_regx 0x7c]
-$C$DW$262	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R31_b1")
-	.dwattr $C$DW$262, DW_AT_location[DW_OP_regx 0x7d]
-$C$DW$263	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R31_b2")
-	.dwattr $C$DW$263, DW_AT_location[DW_OP_regx 0x7e]
-$C$DW$264	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R31_b3")
-	.dwattr $C$DW$264, DW_AT_location[DW_OP_regx 0x7f]
+$C$DW$138	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R0_b0")
+	.dwattr $C$DW$138, DW_AT_location[DW_OP_reg0]
+$C$DW$139	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R0_b1")
+	.dwattr $C$DW$139, DW_AT_location[DW_OP_reg1]
+$C$DW$140	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R0_b2")
+	.dwattr $C$DW$140, DW_AT_location[DW_OP_reg2]
+$C$DW$141	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R0_b3")
+	.dwattr $C$DW$141, DW_AT_location[DW_OP_reg3]
+$C$DW$142	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R1_b0")
+	.dwattr $C$DW$142, DW_AT_location[DW_OP_reg4]
+$C$DW$143	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R1_b1")
+	.dwattr $C$DW$143, DW_AT_location[DW_OP_reg5]
+$C$DW$144	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R1_b2")
+	.dwattr $C$DW$144, DW_AT_location[DW_OP_reg6]
+$C$DW$145	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R1_b3")
+	.dwattr $C$DW$145, DW_AT_location[DW_OP_reg7]
+$C$DW$146	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R2_b0")
+	.dwattr $C$DW$146, DW_AT_location[DW_OP_reg8]
+$C$DW$147	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R2_b1")
+	.dwattr $C$DW$147, DW_AT_location[DW_OP_reg9]
+$C$DW$148	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R2_b2")
+	.dwattr $C$DW$148, DW_AT_location[DW_OP_reg10]
+$C$DW$149	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R2_b3")
+	.dwattr $C$DW$149, DW_AT_location[DW_OP_reg11]
+$C$DW$150	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R3_b0")
+	.dwattr $C$DW$150, DW_AT_location[DW_OP_reg12]
+$C$DW$151	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R3_b1")
+	.dwattr $C$DW$151, DW_AT_location[DW_OP_reg13]
+$C$DW$152	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R3_b2")
+	.dwattr $C$DW$152, DW_AT_location[DW_OP_reg14]
+$C$DW$153	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R3_b3")
+	.dwattr $C$DW$153, DW_AT_location[DW_OP_reg15]
+$C$DW$154	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R4_b0")
+	.dwattr $C$DW$154, DW_AT_location[DW_OP_reg16]
+$C$DW$155	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R4_b1")
+	.dwattr $C$DW$155, DW_AT_location[DW_OP_reg17]
+$C$DW$156	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R4_b2")
+	.dwattr $C$DW$156, DW_AT_location[DW_OP_reg18]
+$C$DW$157	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R4_b3")
+	.dwattr $C$DW$157, DW_AT_location[DW_OP_reg19]
+$C$DW$158	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R5_b0")
+	.dwattr $C$DW$158, DW_AT_location[DW_OP_reg20]
+$C$DW$159	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R5_b1")
+	.dwattr $C$DW$159, DW_AT_location[DW_OP_reg21]
+$C$DW$160	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R5_b2")
+	.dwattr $C$DW$160, DW_AT_location[DW_OP_reg22]
+$C$DW$161	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R5_b3")
+	.dwattr $C$DW$161, DW_AT_location[DW_OP_reg23]
+$C$DW$162	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R6_b0")
+	.dwattr $C$DW$162, DW_AT_location[DW_OP_reg24]
+$C$DW$163	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R6_b1")
+	.dwattr $C$DW$163, DW_AT_location[DW_OP_reg25]
+$C$DW$164	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R6_b2")
+	.dwattr $C$DW$164, DW_AT_location[DW_OP_reg26]
+$C$DW$165	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R6_b3")
+	.dwattr $C$DW$165, DW_AT_location[DW_OP_reg27]
+$C$DW$166	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R7_b0")
+	.dwattr $C$DW$166, DW_AT_location[DW_OP_reg28]
+$C$DW$167	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R7_b1")
+	.dwattr $C$DW$167, DW_AT_location[DW_OP_reg29]
+$C$DW$168	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R7_b2")
+	.dwattr $C$DW$168, DW_AT_location[DW_OP_reg30]
+$C$DW$169	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R7_b3")
+	.dwattr $C$DW$169, DW_AT_location[DW_OP_reg31]
+$C$DW$170	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R8_b0")
+	.dwattr $C$DW$170, DW_AT_location[DW_OP_regx 0x20]
+$C$DW$171	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R8_b1")
+	.dwattr $C$DW$171, DW_AT_location[DW_OP_regx 0x21]
+$C$DW$172	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R8_b2")
+	.dwattr $C$DW$172, DW_AT_location[DW_OP_regx 0x22]
+$C$DW$173	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R8_b3")
+	.dwattr $C$DW$173, DW_AT_location[DW_OP_regx 0x23]
+$C$DW$174	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R9_b0")
+	.dwattr $C$DW$174, DW_AT_location[DW_OP_regx 0x24]
+$C$DW$175	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R9_b1")
+	.dwattr $C$DW$175, DW_AT_location[DW_OP_regx 0x25]
+$C$DW$176	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R9_b2")
+	.dwattr $C$DW$176, DW_AT_location[DW_OP_regx 0x26]
+$C$DW$177	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R9_b3")
+	.dwattr $C$DW$177, DW_AT_location[DW_OP_regx 0x27]
+$C$DW$178	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R10_b0")
+	.dwattr $C$DW$178, DW_AT_location[DW_OP_regx 0x28]
+$C$DW$179	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R10_b1")
+	.dwattr $C$DW$179, DW_AT_location[DW_OP_regx 0x29]
+$C$DW$180	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R10_b2")
+	.dwattr $C$DW$180, DW_AT_location[DW_OP_regx 0x2a]
+$C$DW$181	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R10_b3")
+	.dwattr $C$DW$181, DW_AT_location[DW_OP_regx 0x2b]
+$C$DW$182	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R11_b0")
+	.dwattr $C$DW$182, DW_AT_location[DW_OP_regx 0x2c]
+$C$DW$183	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R11_b1")
+	.dwattr $C$DW$183, DW_AT_location[DW_OP_regx 0x2d]
+$C$DW$184	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R11_b2")
+	.dwattr $C$DW$184, DW_AT_location[DW_OP_regx 0x2e]
+$C$DW$185	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R11_b3")
+	.dwattr $C$DW$185, DW_AT_location[DW_OP_regx 0x2f]
+$C$DW$186	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R12_b0")
+	.dwattr $C$DW$186, DW_AT_location[DW_OP_regx 0x30]
+$C$DW$187	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R12_b1")
+	.dwattr $C$DW$187, DW_AT_location[DW_OP_regx 0x31]
+$C$DW$188	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R12_b2")
+	.dwattr $C$DW$188, DW_AT_location[DW_OP_regx 0x32]
+$C$DW$189	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R12_b3")
+	.dwattr $C$DW$189, DW_AT_location[DW_OP_regx 0x33]
+$C$DW$190	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R13_b0")
+	.dwattr $C$DW$190, DW_AT_location[DW_OP_regx 0x34]
+$C$DW$191	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R13_b1")
+	.dwattr $C$DW$191, DW_AT_location[DW_OP_regx 0x35]
+$C$DW$192	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R13_b2")
+	.dwattr $C$DW$192, DW_AT_location[DW_OP_regx 0x36]
+$C$DW$193	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R13_b3")
+	.dwattr $C$DW$193, DW_AT_location[DW_OP_regx 0x37]
+$C$DW$194	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R14_b0")
+	.dwattr $C$DW$194, DW_AT_location[DW_OP_regx 0x38]
+$C$DW$195	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R14_b1")
+	.dwattr $C$DW$195, DW_AT_location[DW_OP_regx 0x39]
+$C$DW$196	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R14_b2")
+	.dwattr $C$DW$196, DW_AT_location[DW_OP_regx 0x3a]
+$C$DW$197	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R14_b3")
+	.dwattr $C$DW$197, DW_AT_location[DW_OP_regx 0x3b]
+$C$DW$198	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R15_b0")
+	.dwattr $C$DW$198, DW_AT_location[DW_OP_regx 0x3c]
+$C$DW$199	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R15_b1")
+	.dwattr $C$DW$199, DW_AT_location[DW_OP_regx 0x3d]
+$C$DW$200	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R15_b2")
+	.dwattr $C$DW$200, DW_AT_location[DW_OP_regx 0x3e]
+$C$DW$201	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R15_b3")
+	.dwattr $C$DW$201, DW_AT_location[DW_OP_regx 0x3f]
+$C$DW$202	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R16_b0")
+	.dwattr $C$DW$202, DW_AT_location[DW_OP_regx 0x40]
+$C$DW$203	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R16_b1")
+	.dwattr $C$DW$203, DW_AT_location[DW_OP_regx 0x41]
+$C$DW$204	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R16_b2")
+	.dwattr $C$DW$204, DW_AT_location[DW_OP_regx 0x42]
+$C$DW$205	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R16_b3")
+	.dwattr $C$DW$205, DW_AT_location[DW_OP_regx 0x43]
+$C$DW$206	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R17_b0")
+	.dwattr $C$DW$206, DW_AT_location[DW_OP_regx 0x44]
+$C$DW$207	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R17_b1")
+	.dwattr $C$DW$207, DW_AT_location[DW_OP_regx 0x45]
+$C$DW$208	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R17_b2")
+	.dwattr $C$DW$208, DW_AT_location[DW_OP_regx 0x46]
+$C$DW$209	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R17_b3")
+	.dwattr $C$DW$209, DW_AT_location[DW_OP_regx 0x47]
+$C$DW$210	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R18_b0")
+	.dwattr $C$DW$210, DW_AT_location[DW_OP_regx 0x48]
+$C$DW$211	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R18_b1")
+	.dwattr $C$DW$211, DW_AT_location[DW_OP_regx 0x49]
+$C$DW$212	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R18_b2")
+	.dwattr $C$DW$212, DW_AT_location[DW_OP_regx 0x4a]
+$C$DW$213	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R18_b3")
+	.dwattr $C$DW$213, DW_AT_location[DW_OP_regx 0x4b]
+$C$DW$214	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R19_b0")
+	.dwattr $C$DW$214, DW_AT_location[DW_OP_regx 0x4c]
+$C$DW$215	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R19_b1")
+	.dwattr $C$DW$215, DW_AT_location[DW_OP_regx 0x4d]
+$C$DW$216	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R19_b2")
+	.dwattr $C$DW$216, DW_AT_location[DW_OP_regx 0x4e]
+$C$DW$217	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R19_b3")
+	.dwattr $C$DW$217, DW_AT_location[DW_OP_regx 0x4f]
+$C$DW$218	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R20_b0")
+	.dwattr $C$DW$218, DW_AT_location[DW_OP_regx 0x50]
+$C$DW$219	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R20_b1")
+	.dwattr $C$DW$219, DW_AT_location[DW_OP_regx 0x51]
+$C$DW$220	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R20_b2")
+	.dwattr $C$DW$220, DW_AT_location[DW_OP_regx 0x52]
+$C$DW$221	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R20_b3")
+	.dwattr $C$DW$221, DW_AT_location[DW_OP_regx 0x53]
+$C$DW$222	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R21_b0")
+	.dwattr $C$DW$222, DW_AT_location[DW_OP_regx 0x54]
+$C$DW$223	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R21_b1")
+	.dwattr $C$DW$223, DW_AT_location[DW_OP_regx 0x55]
+$C$DW$224	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R21_b2")
+	.dwattr $C$DW$224, DW_AT_location[DW_OP_regx 0x56]
+$C$DW$225	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R21_b3")
+	.dwattr $C$DW$225, DW_AT_location[DW_OP_regx 0x57]
+$C$DW$226	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R22_b0")
+	.dwattr $C$DW$226, DW_AT_location[DW_OP_regx 0x58]
+$C$DW$227	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R22_b1")
+	.dwattr $C$DW$227, DW_AT_location[DW_OP_regx 0x59]
+$C$DW$228	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R22_b2")
+	.dwattr $C$DW$228, DW_AT_location[DW_OP_regx 0x5a]
+$C$DW$229	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R22_b3")
+	.dwattr $C$DW$229, DW_AT_location[DW_OP_regx 0x5b]
+$C$DW$230	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R23_b0")
+	.dwattr $C$DW$230, DW_AT_location[DW_OP_regx 0x5c]
+$C$DW$231	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R23_b1")
+	.dwattr $C$DW$231, DW_AT_location[DW_OP_regx 0x5d]
+$C$DW$232	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R23_b2")
+	.dwattr $C$DW$232, DW_AT_location[DW_OP_regx 0x5e]
+$C$DW$233	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R23_b3")
+	.dwattr $C$DW$233, DW_AT_location[DW_OP_regx 0x5f]
+$C$DW$234	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R24_b0")
+	.dwattr $C$DW$234, DW_AT_location[DW_OP_regx 0x60]
+$C$DW$235	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R24_b1")
+	.dwattr $C$DW$235, DW_AT_location[DW_OP_regx 0x61]
+$C$DW$236	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R24_b2")
+	.dwattr $C$DW$236, DW_AT_location[DW_OP_regx 0x62]
+$C$DW$237	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R24_b3")
+	.dwattr $C$DW$237, DW_AT_location[DW_OP_regx 0x63]
+$C$DW$238	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R25_b0")
+	.dwattr $C$DW$238, DW_AT_location[DW_OP_regx 0x64]
+$C$DW$239	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R25_b1")
+	.dwattr $C$DW$239, DW_AT_location[DW_OP_regx 0x65]
+$C$DW$240	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R25_b2")
+	.dwattr $C$DW$240, DW_AT_location[DW_OP_regx 0x66]
+$C$DW$241	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R25_b3")
+	.dwattr $C$DW$241, DW_AT_location[DW_OP_regx 0x67]
+$C$DW$242	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R26_b0")
+	.dwattr $C$DW$242, DW_AT_location[DW_OP_regx 0x68]
+$C$DW$243	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R26_b1")
+	.dwattr $C$DW$243, DW_AT_location[DW_OP_regx 0x69]
+$C$DW$244	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R26_b2")
+	.dwattr $C$DW$244, DW_AT_location[DW_OP_regx 0x6a]
+$C$DW$245	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R26_b3")
+	.dwattr $C$DW$245, DW_AT_location[DW_OP_regx 0x6b]
+$C$DW$246	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R27_b0")
+	.dwattr $C$DW$246, DW_AT_location[DW_OP_regx 0x6c]
+$C$DW$247	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R27_b1")
+	.dwattr $C$DW$247, DW_AT_location[DW_OP_regx 0x6d]
+$C$DW$248	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R27_b2")
+	.dwattr $C$DW$248, DW_AT_location[DW_OP_regx 0x6e]
+$C$DW$249	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R27_b3")
+	.dwattr $C$DW$249, DW_AT_location[DW_OP_regx 0x6f]
+$C$DW$250	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R28_b0")
+	.dwattr $C$DW$250, DW_AT_location[DW_OP_regx 0x70]
+$C$DW$251	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R28_b1")
+	.dwattr $C$DW$251, DW_AT_location[DW_OP_regx 0x71]
+$C$DW$252	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R28_b2")
+	.dwattr $C$DW$252, DW_AT_location[DW_OP_regx 0x72]
+$C$DW$253	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R28_b3")
+	.dwattr $C$DW$253, DW_AT_location[DW_OP_regx 0x73]
+$C$DW$254	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R29_b0")
+	.dwattr $C$DW$254, DW_AT_location[DW_OP_regx 0x74]
+$C$DW$255	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R29_b1")
+	.dwattr $C$DW$255, DW_AT_location[DW_OP_regx 0x75]
+$C$DW$256	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R29_b2")
+	.dwattr $C$DW$256, DW_AT_location[DW_OP_regx 0x76]
+$C$DW$257	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R29_b3")
+	.dwattr $C$DW$257, DW_AT_location[DW_OP_regx 0x77]
+$C$DW$258	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R30_b0")
+	.dwattr $C$DW$258, DW_AT_location[DW_OP_regx 0x78]
+$C$DW$259	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R30_b1")
+	.dwattr $C$DW$259, DW_AT_location[DW_OP_regx 0x79]
+$C$DW$260	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R30_b2")
+	.dwattr $C$DW$260, DW_AT_location[DW_OP_regx 0x7a]
+$C$DW$261	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R30_b3")
+	.dwattr $C$DW$261, DW_AT_location[DW_OP_regx 0x7b]
+$C$DW$262	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R31_b0")
+	.dwattr $C$DW$262, DW_AT_location[DW_OP_regx 0x7c]
+$C$DW$263	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R31_b1")
+	.dwattr $C$DW$263, DW_AT_location[DW_OP_regx 0x7d]
+$C$DW$264	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R31_b2")
+	.dwattr $C$DW$264, DW_AT_location[DW_OP_regx 0x7e]
+$C$DW$265	.dwtag  DW_TAG_TI_assign_register, DW_AT_name("R31_b3")
+	.dwattr $C$DW$265, DW_AT_location[DW_OP_regx 0x7f]
 	.dwendtag $C$DW$CU
 
